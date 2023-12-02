@@ -1,0 +1,6 @@
+.container {
+	width: min(80ch, 100vw - 2rem);
+	/* Optional Centering */
+	margin-right: auto;
+	margin-left: auto;
+}
