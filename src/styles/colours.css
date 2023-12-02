@@ -1,0 +1,109 @@
+/* TODO: Add modifier for saturation. Shouldn't force vibrant colours on the theme */
+
+.light-theme {
+	--primary-1: hsl(0, 100%, 99%);
+	--primary-2: hsl(calc(var(--primary-hue) - 3), 100%, 98%);
+	--primary-3: hsl(var(--primary-hue), 92%, 95%);
+	--primary-4: hsl(calc(var(--primary-hue) + 2), 100%, 91%);
+	--primary-5: hsl(calc(var(--primary-hue) + 1), 100%, 88%);
+	--primary-6: hsl(calc(var(--primary-hue) + 1), 95%, 84%);
+	--primary-7: hsl(var(--primary-hue), 82%, 78%);
+	--primary-8: hsl(var(--primary-hue), 75%, 70%);
+	--primary-9: hsl(var(--primary-hue), 78%, 54%);
+	--primary-10: hsl(var(--primary-hue), 73%, 51%);
+	--primary-11: hsl(var(--primary-hue), 82%, 45%);
+	--primary-12: hsl(calc(var(--primary-hue) - 2), 50%, 24%);
+
+	--accent-1: hsl(0, 100%, 99%);
+	--accent-2: hsl(calc(var(--accent-hue) - 3), 100%, 98%);
+	--accent-3: hsl(var(--accent-hue), 92%, 95%);
+	--accent-4: hsl(calc(var(--accent-hue) + 2), 100%, 91%);
+	--accent-5: hsl(calc(var(--accent-hue) + 1), 100%, 88%);
+	--accent-6: hsl(calc(var(--accent-hue) + 1), 95%, 84%);
+	--accent-7: hsl(var(--accent-hue), 82%, 78%);
+	--accent-8: hsl(var(--accent-hue), 75%, 70%);
+	--accent-9: hsl(var(--accent-hue), 78%, 54%);
+	--accent-10: hsl(var(--accent-hue), 73%, 51%);
+	--accent-11: hsl(var(--accent-hue), 82%, 45%);
+	--accent-12: hsl(calc(var(--accent-hue) - 2), 50%, 24%);
+
+	--nickel-1: #fdfdfc;
+	--nickel-2: #f9f9f8;
+	--nickel-3: #f1f0ef;
+	--nickel-4: #e9e8e6;
+	--nickel-5: #e2e1de;
+	--nickel-6: #dad9d6;
+	--nickel-7: #cfceca;
+	--nickel-8: #bcbbb5;
+	--nickel-9: #8d8d86;
+	--nickel-10: #82827c;
+	--nickel-11: #63635e;
+	--nickel-12: #21201c;
+
+	--slate-1: #fcfcfd;
+	--slate-2: #f9f9fb;
+	--slate-3: #f0f0f3;
+	--slate-4: #e8e8ec;
+	--slate-5: #e0e1e6;
+	--slate-6: #d9d9e0;
+	--slate-7: #cdced6;
+	--slate-8: #b9bbc6;
+	--slate-9: #8b8d98;
+	--slate-10: #80838d;
+	--slate-11: #60646c;
+	--slate-12: #1c2024;
+}
+
+.dark-theme {
+	--primary-1: hsl(0, 17%, 8%);
+	--primary-2: hsl(var(--primary-hue), 24%, 10%);
+	--primary-3: hsl(calc(var(--primary-hue) - 5), 48%, 15%);
+	--primary-4: hsl(calc(var(--primary-hue) - 6), 64%, 19%);
+	--primary-5: hsl(calc(var(--primary-hue) - 5), 62%, 23%);
+	--primary-6: hsl(calc(var(--primary-hue) - 3), 55%, 28%);
+	--primary-7: hsl(calc(var(--primary-hue) - 1), 49%, 35%);
+	--primary-8: hsl(var(--primary-hue), 50%, 45%);
+	--primary-9: hsl(var(--primary-hue), 78%, 54%);
+	--primary-10: hsl(calc(var(--primary-hue) + 1), 82%, 59%);
+	--primary-11: hsl(calc(var(--primary-hue) + 2), 100%, 75%);
+	--primary-12: hsl(var(--primary-hue), 86%, 89%);
+
+	--accent-1: hsl(0, 17%, 8%);
+	--accent-2: hsl(var(--accent-hue), 24%, 10%);
+	--accent-3: hsl(calc(var(--accent-hue) - 5), 48%, 15%);
+	--accent-4: hsl(calc(var(--accent-hue) - 6), 64%, 19%);
+	--accent-5: hsl(calc(var(--accent-hue) - 5), 62%, 23%);
+	--accent-6: hsl(calc(var(--accent-hue) - 3), 55%, 28%);
+	--accent-7: hsl(calc(var(--accent-hue) - 1), 49%, 35%);
+	--accent-8: hsl(var(--accent-hue), 50%, 45%);
+	--accent-9: hsl(var(--accent-hue), 78%, 54%);
+	--accent-10: hsl(calc(var(--accent-hue) + 1), 82%, 59%);
+	--accent-11: hsl(calc(var(--accent-hue) + 2), 100%, 75%);
+	--accent-12: hsl(var(--accent-hue), 86%, 89%);
+
+	--nickel-1: #111110;
+	--nickel-2: #191918;
+	--nickel-3: #222221;
+	--nickel-4: #2a2a28;
+	--nickel-5: #31312e;
+	--nickel-6: #3b3a37;
+	--nickel-7: #494844;
+	--nickel-8: #62605b;
+	--nickel-9: #6f6d66;
+	--nickel-10: #7c7b74;
+	--nickel-11: #b5b3ad;
+	--nickel-12: #eeeeec;
+
+	--slate-1: #111113;
+	--slate-2: #18191b;
+	--slate-3: #212225;
+	--slate-4: #272a2d;
+	--slate-5: #2e3135;
+	--slate-6: #363a3f;
+	--slate-7: #43484e;
+	--slate-8: #5a6169;
+	--slate-9: #696e77;
+	--slate-10: #777b84;
+	--slate-11: #b0b4ba;
+	--slate-12: #edeef0;
+}
