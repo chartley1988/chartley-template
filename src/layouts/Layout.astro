@@ -1,4 +1,10 @@
 ---
+import '../styles/theme.css'
+import '../styles/colours.css';
+import '../styles/main.css';
+import '../styles/utilities.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 interface Props {
 	title: string;
 }
@@ -16,11 +22,26 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body id="page-body" class="no-js">
+		<Header />
 		<slot />
+		<Footer />
 	</body>
 </html>
 
+<script>
+	import dark_mode from "../utilities/check_dark_mode";
+
+	// If JS enabled, remove 'no-js' class
+	const page_body = document.getElementById('page-body');
+	if(page_body) page_body.className = '';
+
+	const userPreference = dark_mode.checkUserPreference();
+	dark_mode.updateColourTheme(userPreference);
+	dark_mode.onUserChange();
+
+</script>
+
 <style>
-	
+
 </style>

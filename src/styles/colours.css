@@ -107,3 +107,59 @@
 	--slate-11: #b0b4ba;
 	--slate-12: #edeef0;
 }
+
+@media (prefers-color-scheme: dark) {
+	.no-js {
+		--primary-1: hsl(0, 17%, 8%);
+		--primary-2: hsl(var(--primary-hue), 24%, 10%);
+		--primary-3: hsl(calc(var(--primary-hue) - 5), 48%, 15%);
+		--primary-4: hsl(calc(var(--primary-hue) - 6), 64%, 19%);
+		--primary-5: hsl(calc(var(--primary-hue) - 5), 62%, 23%);
+		--primary-6: hsl(calc(var(--primary-hue) - 3), 55%, 28%);
+		--primary-7: hsl(calc(var(--primary-hue) - 1), 49%, 35%);
+		--primary-8: hsl(var(--primary-hue), 50%, 45%);
+		--primary-9: hsl(var(--primary-hue), 78%, 54%);
+		--primary-10: hsl(calc(var(--primary-hue) + 1), 82%, 59%);
+		--primary-11: hsl(calc(var(--primary-hue) + 2), 100%, 75%);
+		--primary-12: hsl(var(--primary-hue), 86%, 89%);
+
+		--accent-1: hsl(0, 17%, 8%);
+		--accent-2: hsl(var(--accent-hue), 24%, 10%);
+		--accent-3: hsl(calc(var(--accent-hue) - 5), 48%, 15%);
+		--accent-4: hsl(calc(var(--accent-hue) - 6), 64%, 19%);
+		--accent-5: hsl(calc(var(--accent-hue) - 5), 62%, 23%);
+		--accent-6: hsl(calc(var(--accent-hue) - 3), 55%, 28%);
+		--accent-7: hsl(calc(var(--accent-hue) - 1), 49%, 35%);
+		--accent-8: hsl(var(--accent-hue), 50%, 45%);
+		--accent-9: hsl(var(--accent-hue), 78%, 54%);
+		--accent-10: hsl(calc(var(--accent-hue) + 1), 82%, 59%);
+		--accent-11: hsl(calc(var(--accent-hue) + 2), 100%, 75%);
+		--accent-12: hsl(var(--accent-hue), 86%, 89%);
+
+		--nickel-1: #111110;
+		--nickel-2: #191918;
+		--nickel-3: #222221;
+		--nickel-4: #2a2a28;
+		--nickel-5: #31312e;
+		--nickel-6: #3b3a37;
+		--nickel-7: #494844;
+		--nickel-8: #62605b;
+		--nickel-9: #6f6d66;
+		--nickel-10: #7c7b74;
+		--nickel-11: #b5b3ad;
+		--nickel-12: #eeeeec;
+
+		--slate-1: #111113;
+		--slate-2: #18191b;
+		--slate-3: #212225;
+		--slate-4: #272a2d;
+		--slate-5: #2e3135;
+		--slate-6: #363a3f;
+		--slate-7: #43484e;
+		--slate-8: #5a6169;
+		--slate-9: #696e77;
+		--slate-10: #777b84;
+		--slate-11: #b0b4ba;
+		--slate-12: #edeef0;
+	}
+}
