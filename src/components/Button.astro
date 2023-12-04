@@ -1,0 +1,48 @@
+---
+interface Props {
+	colour: 'primary' | 'accent'
+}
+
+const { colour } = Astro.props;
+---
+
+<div class={`btn ${colour}`} >
+    <slot />
+</div>
+
+<style>
+	.btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.25rem 1rem;
+        width: max-content;
+        height: 44px;
+        border-radius: var(--radius-md);
+        transition-duration: 0.3s;
+    }
+
+    .btn:hover {
+        transition-duration: 0.3s;
+    }
+
+    .primary {
+        background-color: var(--primary-3);
+        border: var(--primary-7) solid 1px;
+    }
+
+    .primary:hover {
+        background-color: var(--primary-4);
+        box-shadow: var(--primary-8) 0px 1px 2px inset, var(--primary-8) 0px 0px 0px 2px inset;
+    }
+
+    .accent {
+        background-color: var(--accent-3);
+        border: var(--accent-7) solid 1px;
+    }
+
+    .accent:hover {
+        background-color: var(--accent-4);
+        box-shadow: var(--accent-8) 0px 1px 2px inset, var(--accent-8) 0px 0px 0px 2px inset;
+    }
+</style>
