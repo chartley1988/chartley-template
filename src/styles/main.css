@@ -1,0 +1,29 @@
+body {
+	background-color: var(--primary-1);
+	color: var(--primary-12);
+}
+
+hr {
+	width: 90%;
+	border: 1px solid var(--primary-6);
+}
+
+@media (min-width: 640px) {
+	
+}
+
+@media (min-width: 768px) {
+	
+}
+
+@media (min-width: 1024px) {
+	
+}
+
+@media (min-width: 1280px) {
+	
+}
+
+@media (min-width: 1536px) {
+	
+}
