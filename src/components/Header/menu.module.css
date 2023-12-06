@@ -79,8 +79,8 @@ button {
 
 	padding: 1rem;
 	border-radius: var(--radius-sm);
-	box-shadow: var(--ui-element-border) 0px 1px 2px inset,
-		var(--ui-element-border) 0px 0px 0px 2px inset;
+	box-shadow: var(--ui-border) 0px 1px 2px inset,
+		var(--ui-border) 0px 0px 0px 2px inset;
 }
 
 .dropdown-flex {
@@ -99,8 +99,8 @@ button {
 .menu-entry:hover,
 .menu-entry:focus-visible {
 	background-color: var(--ui-element-bg-hovered);
-	box-shadow: var(--ui-element-border-hovered) 0px 1px 2px inset,
-		var(--ui-element-border-hovered) 0px 0px 0px 2px inset;
+	box-shadow: var(--ui-border-hovered) 0px 1px 2px inset,
+		var(--ui-border-hovered) 0px 0px 0px 2px inset;
 	outline: none;
 	border-radius: var(--radius-sm);
 }
