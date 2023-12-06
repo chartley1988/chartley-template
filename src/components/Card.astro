@@ -1,0 +1,36 @@
+---
+interface Props {
+	
+}
+
+const {  } = Astro.props;
+---
+
+<div class="card">
+	<slot />
+</div>
+
+<style>
+	.card {
+		background-color: var(--ui-element-bg);
+		color: var(--ui-text-high-contrast);
+		padding: 0.5rem 1rem;
+		border: var(--ui-border) solid 1px;
+		border-radius: var(--radius-sm);
+		box-sizing: border-box;
+		box-shadow: var(--shadow-md);
+		 
+		max-width: 200px;
+		min-height: 240px;
+		font-size: 20px;
+
+		transition-duration: 0.3s;
+	}
+
+	.card:hover {
+		background-color: var(--ui-element-bg-hovered);
+		box-shadow: var(--ui-border-hovered) 0px 1px 2px inset, var(--ui-border-hovered) 0px 0px 0px 2px inset, var(--shadow-md);
+		transition-duration: 0.3s;
+	}
+</style>
+
