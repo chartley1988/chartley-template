@@ -1,12 +1,12 @@
 header {
 	--font-size: 24px;
 	--height: 48px;
-	background-color: var(--primary-3);
+	background-color: var(--ui-element-bg);
 	font-size: var(--font-size);
 	height: var(--height);
 
-    display: flex;
-    align-items: stretch;
+	display: flex;
+	align-items: stretch;
 }
 
 .nav-wrapper {
@@ -14,6 +14,7 @@ header {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+	height: var(--height);
 }
 
 .nav-sections-container {
@@ -21,12 +22,12 @@ header {
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
-    height: 100%;
+	height: 100%;
 }
 
 .menu-icon {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .menu-icon > button > svg {
@@ -36,19 +37,89 @@ header {
 
 .menu-items {
 	z-index: 2;
-	margin-top: 10px;
 	width: 100%;
 }
 
 .menu-list {
 	display: flex;
 	flex-direction: column;
-    list-style: none;
+	justify-content: center;
+	list-style: none;
 }
 
-.menu-list > li > a {
-    text-decoration: none;
-    color: var(--primary-11);
+.menu-list > li {
+	display: flex;
+	align-items: center;
+}
+
+.menu-list > li > a,
+button {
+	text-decoration: none;
+	color: var(--ui-text-low-contrast);
+}
+
+/* Drop Down Classes */
+.dropdown-button-container {
+	padding: 0px;
+}
+
+.dropdown-button-container > button > svg {
+	width: 20px;
+	height: auto;
+	transition-duration: 0.3s;
+}
+
+/* Styles for the actual dropdown panel */
+.dropdown-container {
+	background-color: var(--ui-element-bg);
+	position: absolute;
+	width: 20vw;
+
+	left: clamp(0vw);
+
+	padding: 1rem;
+	border-radius: var(--radius-sm);
+	box-shadow: var(--ui-element-border) 0px 1px 2px inset,
+		var(--ui-element-border) 0px 0px 0px 2px inset;
+}
+
+.dropdown-flex {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.menu-entry {
+	text-decoration: none;
+	color: var(--ui-text-high-contrast);
+	padding: var(--padding-sm);
+}
+
+.menu-entry:focus,
+.menu-entry:hover,
+.menu-entry:focus-visible {
+	background-color: var(--ui-element-bg-hovered);
+	box-shadow: var(--ui-element-border-hovered) 0px 1px 2px inset,
+		var(--ui-element-border-hovered) 0px 0px 0px 2px inset;
+	outline: none;
+	border-radius: var(--radius-sm);
+}
+
+.dropdown-button {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.25rem;
+	height: var(--height);
+}
+
+/* Controls dropdown menu alignment when near edge of screen */
+.dropdown-container-left {
+	transform-origin: top left;
+}
+
+.dropdown-container-right {
+	transform-origin: top right;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -73,5 +144,13 @@ header {
 	.menu-list {
 		flex-direction: row;
 		gap: 16px;
+	}
+
+	.dropdown-container-left {
+		left: 0;
+	}
+
+	.dropdown-container-right {
+		right: 0;
 	}
 }
