@@ -1,12 +1,13 @@
 ---
 import { Dropdown as DropdownContainer, DropdownItems } from "astro-navbar";
 const { title, lastItem, children } = Astro.props;
+import style from "./menu.module.css"
 ---
 
 <li class="relative">
-  <DropdownContainer class="group">
+  <DropdownContainer class={style['dropdown-button-container']}>
     <button
-      class="flex-row drop-down-btn">
+      class={style['dropdown-button']}>
       <span>{title}</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -21,21 +22,21 @@ const { title, lastItem, children } = Astro.props;
           d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
       </svg>
     </button>
-    <DropdownItems>
+    <DropdownItems class="position-relative">
       <div
         class:list={[
-          "drop-down-container",
+          style["dropdown-container"],
           lastItem
-            ? "lg:right-0 origin-top-right"
-            : "lg:left-0 origin-top-left",
+            ? style["dropdown-container-right"]
+            : style["dropdown-container-left"],
         ]}>
         <div
-          class="px-3 lg:py-2 lg:bg-white lg:rounded-md lg:shadow lg:border flex flex-col">
+          class={style['dropdown-flex']}>
           {
             children.map((item: any) => (
               <a
                 href={item.path}
-                class="py-1 text-gray-600 hover:text-gray-900">
+                class={style['menu-entry']}>
                 {item.title}
               </a>
             ))
@@ -45,3 +46,15 @@ const { title, lastItem, children } = Astro.props;
     </DropdownItems>
   </DropdownContainer>
 </li>
+
+<style is:global>
+  .open > button > svg {
+    transform: rotate(180deg);
+    transition-duration: 0.3s;
+  }
+
+  .position-relative {
+    position: relative;
+    height: 100%;
+  }
+</style>
