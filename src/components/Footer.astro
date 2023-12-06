@@ -1,0 +1,39 @@
+---
+interface Props {
+}
+
+const {  } = Astro.props;
+---
+
+<footer>
+	<div class="container flex-row wrapper">
+		<p>Logo!</p>
+		<ul class="flex-col">
+			<li>Menu Option 1</li>
+			<li>Menu Option 2</li>
+			<li>Menu Option 3</li>
+		</ul>
+	</div>
+
+</footer>
+
+<style>
+	footer {
+		background-color: var(--ui-subtle-bg);
+		height: 100px;
+	}
+
+	ul {
+		justify-content: center;
+		height: min-content;
+		gap: 0.25rem;
+		list-style: none;
+	}
+
+	.wrapper {
+		align-items: center;
+		height: 100%;
+	}
+	
+
+</style>
