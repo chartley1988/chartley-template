@@ -1,9 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PalettePreview from '../components/PalettePreview.astro';
+import Card from '../components/Card.astro';
+import Button from '../components/Button.astro';
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
+	<main class="container">
+		<PalettePreview />
+		<Card>
+			Hello! This is a card
+		</Card>
+		<Button colour='primary'>Sample Button</Button>
+		<Button colour='accent'>Sample Button</Button>
 		
 	</main>
 </Layout>
