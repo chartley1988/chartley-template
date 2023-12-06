@@ -1,3 +1,19 @@
+/* UI Colour theme, default is Nickel */
+.light-theme, .dark-theme {
+	--ui-bg: var(--nickel-1);
+	--ui-bg-subtle: var(--nickel-2);
+	--ui-element-bg: var(--nickel-3);
+	--ui-element-bg-hovered: var(--nickel-4);
+	--ui-element-bg-active: var(--nickel-5);
+	--ui-border-subtle: var(--nickel-6);
+	--ui-border: var(--nickel-7);
+	--ui-border-hovered: var(--nickel-8);
+	--ui-bg-solid: var(--nickel-9);
+	--ui-bg-solid-hovered: var(--nickel-10);
+	--ui-text-low-contrast: var(--nickel-11); 
+	--ui-text-high-contrast: var(--nickel-12);
+}
+
 :root {
 	/* COLOURS */
 	--primary-hue: 210;
@@ -18,6 +34,10 @@
 		var(--primary-saturation),
 		var(--primary-lightness)
 	);
+
+	--padding-sm: 0.25rem;
+	--padding-md: 1rem;
+	--padding-lg: 2.5rem;
 
 	/* SHADOWS */
 	--shadow-sm: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
