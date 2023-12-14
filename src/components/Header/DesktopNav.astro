@@ -1,4 +1,45 @@
 ---
+import style from "./DesktopNav.module.css";
+import { Icon } from "astro-icon";
 
+type menuOptionsType = {
+	title: string;
+	path: string;
+	badge?: true;
+	children?: menuOptionsType[];
+};
+interface Props {
+	menuOptions: menuOptionsType[];
+}
+
+const { menuOptions } = Astro.props;
 ---
 
+<div class={style.container}>
+	<menu>
+		{
+			menuOptions.map((item, index) => {
+				return item.children ? (
+					<li>
+						<a
+							href={item.path}
+							class={style.link}
+						>
+							{item.title}
+							<Icon name='fluent:chevron-down-12-filled' />
+						</a>
+					</li>
+				) : (
+					<li>
+						<a
+							href={item.path}
+							class={style.link}
+						>
+							{item.title}
+						</a>
+					</li>
+				);
+			})
+		}
+	</menu>
+</div>

@@ -1,0 +1,19 @@
+---
+import { Icon } from 'astro-icon';
+import style from './MobileNav.module.css';
+
+type menuOptionsType = {
+	title: string;
+	path: string;
+	badge?: true;
+	children?: menuOptionsType[];
+};
+interface Props {
+	menuOptions: menuOptionsType[];
+}
+
+const { menuOptions } = Astro.props;
+---
+<button class={style['menu-button']}>
+    <Icon name="ic:baseline-menu"/>
+</button>

@@ -1,0 +1,37 @@
+.container {
+    display: none;
+}
+
+.container > menu {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5em;
+    list-style: none;
+
+    font-size: 1.25rem;
+    color: var(--ui-)
+}
+
+.link {
+    text-decoration: none;
+    color: var(--ui-text-low-contrast);
+
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+}
+
+.link > svg {
+    height: 1em;
+    width: auto;
+}
+
+.link:hover {
+    color: var(--primary-11);
+}
+
+@media (min-width: 1024px) {
+	.container {
+        display: block
+    }
+}

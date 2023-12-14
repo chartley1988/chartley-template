@@ -1,6 +1,8 @@
 ---
-import { propsToFilename } from "astro/assets/utils";
 import style from "./Header.module.css";
+import DesktopNav from "./DesktopNav.astro";
+import ContactButton from "./ContactButton.astro";
+import MobileNav from "./MobileNav.astro";
 
 interface Props {
 	siteName: string;
@@ -39,16 +41,6 @@ const menuOptions: menuOptionsType[] = [
 	{
 		title: "Services",
 		path: "/",
-		children: [
-			{
-				title: "Services",
-				path: "/",
-			},
-			{
-				title: "Services",
-				path: "/",
-			},
-		],
 	},
 ];
 ---
@@ -68,4 +60,7 @@ const menuOptions: menuOptionsType[] = [
 		}
 		{logo == undefined && <div>{siteName}</div>}
 	</div>
+	<DesktopNav menuOptions={menuOptions} />
+	<ContactButton />
+	<MobileNav menuOptions={menuOptions} />
 </header>

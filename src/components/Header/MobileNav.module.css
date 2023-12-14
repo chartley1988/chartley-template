@@ -1,0 +1,27 @@
+.container {
+	display: block;
+}
+
+.menu-button {
+	display: flex;
+	min-height: 48px;
+	width: auto;
+
+	align-items: center;
+}
+
+.menu-button > svg {
+	height: 2em;
+	width: auto;
+    color: var(--ui-text-high-contrast)
+}
+
+@media (min-width: 1024px) {
+	.container {
+		display: none;
+	}
+
+	.menu-button {
+		display: none;
+	}
+}
