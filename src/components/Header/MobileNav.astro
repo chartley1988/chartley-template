@@ -1,6 +1,6 @@
 ---
-import { Icon } from 'astro-icon';
-import style from './MobileNav.module.css';
+import { Icon } from "astro-icon";
+import style from "./MobileNav.module.css";
 
 type menuOptionsType = {
 	title: string;
@@ -14,6 +14,51 @@ interface Props {
 
 const { menuOptions } = Astro.props;
 ---
-<button class={style['menu-button']}>
-    <Icon name="ic:baseline-menu"/>
+
+<button
+	class={style["menu-button"]}
+	id='menu-button'
+	aria-label='Menu Button'
+>
+	<Icon name='ic:baseline-menu' />
 </button>
+<div
+	id='mobile-menu'
+	class={`mobile-hidden ${style.wrapper}`}
+>
+	<menu class={style.container}>
+		{
+			menuOptions.map((item, index) => {
+				return item.children ? (
+					<li>
+						<a
+							href={item.path}
+							class={style.link}
+						>
+							{item.title}
+							<Icon name='fluent:chevron-down-12-filled' />
+						</a>
+					</li>
+				) : (
+					<li>
+						<a
+							href={item.path}
+							class={style.link}
+						>
+							{item.title}
+						</a>
+					</li>
+				);
+			})
+		}
+	</menu>
+</div>
+
+<script>
+	const menuButton = document.getElementById("menu-button");
+	const menu = document.getElementById("mobile-menu");
+
+	menuButton?.addEventListener("click", (event) => {
+		menu?.classList.toggle("mobile-hidden");
+	});
+</script>

@@ -1,37 +1,52 @@
 header.container {
 	background-color: var(--ui-bg-subtle);
 	min-height: 48px;
-    padding: 0.5rem 1rem;
+	padding: 0.5rem 1rem;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	/* Only applicable in mobile */
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto auto;
 
-    box-shadow: var(--shadow-md);
-    /* border-bottom: var(--ui-border-subtle) solid 2px; */
+	justify-content: space-between;
+	align-items: center;
+
+	box-shadow: var(--shadow-md);
+	/* border-bottom: var(--ui-border-subtle) solid 2px; */
 }
 
 .letterhead {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.25em;
+	/* Only applicable in mobile */
+	grid-column: 1/2;
+	grid-row: 1/2;
 
-    font-size: 1.25rem;
-    font-family: var(--font-headings);
-    color: var(--ui-text-high-contrast);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.25em;
 
-    word-break: keep-all;
-    width: max-content;
+	font-size: 1.25rem;
+	font-family: var(--font-headings);
+	color: var(--ui-text-high-contrast);
+
+	word-break: keep-all;
+	width: max-content;
 }
 
 .letterhead > img {
-    height: 1em;
-    width: auto;
+	height: 1em;
+	width: auto;
 }
 
 @media (min-width: 640px) {
-    .letterhead {
-        font-size: 2rem;
-    }
+	.letterhead {
+		font-size: 2rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	header.container {
+		display: flex;
+		flex-direction: row;
+	}
 }
