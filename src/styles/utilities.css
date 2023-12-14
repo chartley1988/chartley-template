@@ -5,6 +5,11 @@
 	margin-left: auto;
 }
 
+.content {
+	padding-top: max(4vh, 1rem);
+	padding-bottom: max(8vh, 2rem);
+}
+
 .flex-row {
 	display: flex;
 	flex-direction: row;

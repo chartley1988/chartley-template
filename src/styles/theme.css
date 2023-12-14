@@ -25,6 +25,9 @@
 		var(--primary-lightness)
 	);
 
+	--font-text: 'Poppins', sans-serif;
+	--font-headings: 'PT Sans', sans-serif;
+
 	/* 
 	Replace These values for custom accent colour, otherwise a default complimentary one is assigned. 
 	*/

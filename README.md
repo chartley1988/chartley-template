@@ -1,9 +1,14 @@
+## Customizing This Theme
+
+Most of the customization is done in the "Layout" file in the layouts folder. Here you can change default colours, fonts, spacing, and more. At the top of the file, edit the metadata to have site-wide impacts. 
+
 ## Using Colours
 
 _Borrowed From Radix Colour themes_: [Radix](https://www.radix-ui.com/colors/docs/palette-composition/understanding-the-scale)
-- For more finely tuned colour palettes: [Radix Scales](https://www.radix-ui.com/colors/docs/palette-composition/scales)
-- Use `Slate` for a cool gray
-- Use `Nickel` for a warm gray
+
+-   For more finely tuned colour palettes: [Radix Scales](https://www.radix-ui.com/colors/docs/palette-composition/scales)
+-   Use `Slate` for a cool gray
+-   Use `Nickel` for a warm gray
 
 | Colour | Use                                   |
 | :----- | :------------------------------------ |
@@ -19,6 +24,14 @@ _Borrowed From Radix Colour themes_: [Radix](https://www.radix-ui.com/colors/doc
 | 10     | Hovered Solid backgrounds             |
 | 11     | Low Contrast Text                     |
 | 12     | High Contrast Text                    |
+
+## Change Font
+
+1. Install font using Fontsource
+   Example
+   `npm install @fontsource/poppins`
+2. Import it into layout file:
+   `import '@fontsource/poppins';`
 
 ## 🧞 Commands
 

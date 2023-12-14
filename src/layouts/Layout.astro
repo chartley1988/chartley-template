@@ -1,31 +1,66 @@
 ---
-import '../styles/reset.css';
-import '../styles/colours.css';
-import '../styles/main.css';
-import '../styles/utilities.css';
-import '../styles/theme.css';
-import Header from '../components/Header/Header.astro';
-import Footer from '../components/Footer.astro';
+import "@fontsource/poppins";
+import "@fontsource/pt-sans";
+import "../styles/reset.css";
+import "../styles/colours.css";
+import "../styles/main.css";
+import "../styles/utilities.css";
+import "../styles/theme.css";
+import Header from "../components/Header/Header.astro";
+import Footer from "../components/Footer.astro";
+import { string } from "astro/zod";
 interface Props {
 	title: string;
+	logo?: string;
 }
 
-const { title } = Astro.props;
+interface summaryTypes {
+	siteName: string;
+	logoURL?: string;
+}
+// SITE SETTINGS --------------------//
+const summary = {
+	siteName: "Company Name",
+	logoURL: "/favicon.svg",
+};
+// ----------------------------------//
+
+const { title, logo } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang='en'>
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
+		<meta charset='UTF-8' />
+		<meta
+			name='description'
+			content='Astro description'
+		/>
+		<meta
+			name='viewport'
+			content='width=device-width'
+		/>
+		<link
+			rel='icon'
+			type='image/svg+xml'
+			href='/favicon.svg'
+		/>
+		<meta
+			name='generator'
+			content={Astro.generator}
+		/>
 		<title>{title}</title>
 	</head>
-	<body id="page-body" class="no-js">
-		<Header />
-		<div class="content">
+	<body
+		id='page-body'
+		class='no-js'
+	>
+		<Header
+			siteName={summary.siteName}
+			logo={summary.logoURL ? summary.logoURL : undefined}
+			showSiteName={false}
+		/>
+		<div class='content'>
 			<slot />
 		</div>
 		<Footer />
@@ -36,16 +71,71 @@ const { title } = Astro.props;
 	import dark_mode from "../utilities/check_dark_mode";
 
 	// If JS enabled, remove 'no-js' class
-	const page_body = document.getElementById('page-body');
-	if(page_body) page_body.className = '';
+	const page_body = document.getElementById("page-body");
+	if (page_body) page_body.className = "";
 
 	const userPreference = dark_mode.checkUserPreference();
 	dark_mode.updateColourTheme(userPreference);
 	dark_mode.onUserChange();
-
 </script>
 
-<style>
+<style is:global>
+	/* UI Colour theme, default is Nickel */
+	.light-theme,
+	.dark-theme {
+		--ui-bg: var(--nickel-1);
+		--ui-bg-subtle: var(--nickel-2);
+		--ui-element-bg: var(--nickel-3);
+		--ui-element-bg-hovered: var(--nickel-4);
+		--ui-element-bg-active: var(--nickel-5);
+		--ui-border-subtle: var(--nickel-6);
+		--ui-border: var(--nickel-7);
+		--ui-border-hovered: var(--nickel-8);
+		--ui-bg-solid: var(--nickel-9);
+		--ui-bg-solid-hovered: var(--nickel-10);
+		--ui-text-low-contrast: var(--nickel-11);
+		--ui-text-high-contrast: var(--nickel-12);
+	}
+
+	:root {
+		/* COLOURS */
+		--primary-hue: 210;
+		--primary-saturation: 40%;
+		--primary-lightness: 50%;
+		--primary: hsl(
+			var(--primary-hue),
+			var(--primary-saturation),
+			var(--primary-lightness)
+		);
+
+		--font-text: "Poppins", sans-serif;
+		--font-headings: "PT Sans", sans-serif;
+
+		/* 
+		Replace These values for custom accent colour, otherwise a default complimentary one is assigned. 
+		*/
+		--accent-hue: calc(var(--primary-hue) + 180);
+		--accent: hsl(
+			var(--accent-hue),
+			var(--primary-saturation),
+			var(--primary-lightness)
+		);
+
+		--padding-sm: 0.25rem;
+		--padding-md: 1rem;
+		--padding-lg: 2.5rem;
+
+		/* SHADOWS */
+		--shadow-sm: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+			rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+		--shadow-md: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+			rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+
+		/* CORNER RADIUS */
+		--radius-sm: 0.25rem;
+		--radius-md: 0.75rem;
+		--radius-lg: 1.5rem/1.25rem;
+	}
 	.content {
 		padding-top: max(4vh, 1rem);
 		padding-bottom: max(8vh, 2rem);

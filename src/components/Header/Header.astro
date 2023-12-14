@@ -1,59 +1,71 @@
 ---
+import { propsToFilename } from "astro/assets/utils";
+import style from "./Header.module.css";
 
+interface Props {
+	siteName: string;
+	showSiteName?: boolean;
+	logo?: string | undefined;
+}
 
-
-
-
-interface Props {};
-const {} = Astro.props;
+const { siteName, logo, showSiteName = true } = Astro.props;
 
 type menuOptionsType = {
-	title: string,
-	path: string,
-	badge?: true,
-	children?: menuOptionsType[],
-}
+	title: string;
+	path: string;
+	badge?: true;
+	children?: menuOptionsType[];
+};
 
 const menuOptions: menuOptionsType[] = [
 	{
 		title: "Services",
-		path: "/"
-	},{
-		title: "Services",
 		path: "/",
-		children: [
-			
-			{
-				title: "Services",
-				path: "/"
-			},
-			{
-				title: "Services",
-				path: "/"
-			},
-		]
-	},{
-		title: "Services",
-		path: "/",
-		children: [
-			
-			{
-				title: "Services",
-				path: "/"
-			},
-			{
-				title: "Services",
-				path: "/"
-			},
-		]
 	},
-]
-
+	{
+		title: "Services",
+		path: "/",
+		children: [
+			{
+				title: "Services",
+				path: "/",
+			},
+			{
+				title: "Services",
+				path: "/",
+			},
+		],
+	},
+	{
+		title: "Services",
+		path: "/",
+		children: [
+			{
+				title: "Services",
+				path: "/",
+			},
+			{
+				title: "Services",
+				path: "/",
+			},
+		],
+	},
+];
 ---
-<header>
-	<div>
-	<p>asdfdsf sdf</p>
-	</div>
-	
-</header>
 
+<header class={style.container}>
+	<div class={style.letterhead}>
+		{
+			logo != undefined && (
+				<>
+					<img
+						src={logo}
+						alt=''
+					/>
+					<div>{siteName}</div>
+				</>
+			)
+		}
+		{logo == undefined && <div>{siteName}</div>}
+	</div>
+</header>
