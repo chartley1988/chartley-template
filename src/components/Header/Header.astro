@@ -1,7 +1,7 @@
 ---
-import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
-import Dropdown from "./Dropdown.astro";
-import style from "./menu.module.css"
+
+
+
 
 
 interface Props {};
@@ -22,10 +22,7 @@ const menuOptions: menuOptionsType[] = [
 		title: "Services",
 		path: "/",
 		children: [
-			{
-				title: "Services Are the most important thing Services Are the most important thingServices Are the most important thing",
-				path: "/"
-			},
+			
 			{
 				title: "Services",
 				path: "/"
@@ -39,10 +36,7 @@ const menuOptions: menuOptionsType[] = [
 		title: "Services",
 		path: "/",
 		children: [
-			{
-				title: "Services Are the most important thing Services Are the most important thingServices Are the most important thing",
-				path: "/"
-			},
+			
 			{
 				title: "Services",
 				path: "/"
@@ -57,50 +51,9 @@ const menuOptions: menuOptionsType[] = [
 
 ---
 <header>
-	<div class={`container ${style['nav-wrapper']}`}>
-		<Astronav>
-			<!-- Logo and Mobile Menu Icon -->
-			<div class={style["nav-sections-container"]}>
-				<a href="/">
-					<span>Title</span>
-				</a>
-				<div class={style["menu-icon"]}>
-					<MenuIcon  />
-				</div>
-			</div>
-
-			<!-- Menu Options -->
-			<MenuItems class={`hidden ${style["menu-items"]}`}>
-				<menu class={style["menu-list"]}>
-					{menuOptions.map((item, index) => {
-						return (
-
-							item.children ? (
-								<Dropdown
-								title={item.title}
-								children={item.children}
-								lastItem={index === menuOptions.length - 1}
-								  />
-							) : (
-								<li>
-									<a
-										  href={item.path}
-										  class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900">
-											  <span> {item.title}</span>
-											  {item.badge && (
-												<span class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase text-white bg-indigo-600 rounded-full">
-												  New
-											</span>
-											  )}
-									</a>
-								  </li>
-							)
-						)
-					})}
-				</menu>
-			
-			</MenuItems>
-		</Astronav>
+	<div>
+	<p>asdfdsf sdf</p>
 	</div>
+	
 </header>
 
