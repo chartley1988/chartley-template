@@ -21,13 +21,10 @@ const { menuOptions } = Astro.props;
 			menuOptions.map((item, index) => {
 				return item.children ? (
 					<li>
-						<a
-							href={item.path}
-							class={style.link}
-						>
+						<button class={style.link}>
 							{item.title}
 							<Icon name='fluent:chevron-down-12-filled' />
-						</a>
+						</button>
 					</li>
 				) : (
 					<li>

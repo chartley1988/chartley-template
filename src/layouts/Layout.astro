@@ -6,7 +6,7 @@ import "../styles/colours.css";
 import "../styles/main.css";
 import "../styles/utilities.css";
 import Header from "../components/Header/Header.astro";
-import Footer from "../components/Footer.astro";
+import Footer from "../components/Footer/Footer.astro";
 import { string } from "astro/zod";
 interface Props {
 	title: string;
@@ -62,7 +62,11 @@ const { title, logo } = Astro.props;
 		<div class='content'>
 			<slot />
 		</div>
-		<Footer />
+		<Footer
+			siteName={summary.siteName}
+			logo={summary.logoURL ? summary.logoURL : undefined}
+			showSiteName={true}
+		/>
 	</body>
 </html>
 
@@ -120,9 +124,9 @@ const { title, logo } = Astro.props;
 			var(--primary-lightness)
 		);
 
-		--padding-sm: 0.25rem;
-		--padding-md: 1rem;
-		--padding-lg: 2.5rem;
+		--spacing-sm: 0.25rem;
+		--spacing-md: 1rem;
+		--spacing-lg: 2.5rem;
 
 		/* SHADOWS */
 		--shadow-sm: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
