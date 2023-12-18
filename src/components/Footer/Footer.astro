@@ -87,9 +87,9 @@ const socials = {
 
 			<FooterList data={socials} />
 
-			<div class='bottom-text'>Designed by Chartley</div>
 		</div>
 	</div>
+	<div class='bottom-text'>Designed by Chartley</div>
 </footer>
 
 <style>
@@ -103,12 +103,14 @@ const socials = {
 	.flex-responsive {
 		display: flex;
 		flex-direction: column;
+		gap: var(--spacing-lg);
 	}
 
 	.grid {
 		flex: 1;
 		display: grid;
-		gap: 0.25rem;
+		gap: 2rem 1rem;
+		
 		grid-template-columns: 1fr;
 		grid-template-rows: auto auto;
 		grid-auto-flow: row;
@@ -118,12 +120,13 @@ const socials = {
 		display: flex;
 		flex-direction: column;
 		align-items: start;
+
 	}
 
 	.bottom-text {
-		grid-column: 1/-1;
-		grid-row: /-1;
-		justify-self: center;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
 		margin-top: 1.5rem;
 		margin-bottom: 0.75rem;
 	}
