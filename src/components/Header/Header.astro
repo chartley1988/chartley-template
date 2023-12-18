@@ -1,8 +1,8 @@
 ---
 import style from "./Header.module.css";
-import DesktopNav from "./DesktopNav.astro";
+import DesktopNav from "./DesktopNav/DesktopNav.astro";
 import ContactButton from "./ContactButton.astro";
-import MobileNav from "./MobileNav.astro";
+import MobileNav from "./MobileNav/MobileNav.astro";
 
 interface Props {
 	siteName: string;
@@ -39,12 +39,18 @@ const menuOptions: menuOptionsType[] = [
 		],
 	},
 	{
-		title: "About us",
-		path: "/about",
-	},
-	{
-		title: "Contact us",
-		path: "/contact",
+		title: "About",
+		path: "/",
+		children: [
+			{
+				title: "About Us",
+				path: "/",
+			},
+			{
+				title: "Contact Us",
+				path: "/",
+			},
+		],
 	},
 ];
 ---

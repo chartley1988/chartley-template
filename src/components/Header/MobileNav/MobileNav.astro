@@ -25,19 +25,35 @@ const { menuOptions } = Astro.props;
 <div
 	id='mobile-menu'
 	class={`mobile-hidden ${style.wrapper}`}
+	data-options={JSON.stringify(menuOptions)}
 >
 	<menu class={style.container}>
 		{
 			menuOptions.map((item, index) => {
 				return item.children ? (
 					<li>
-						<a
-							href={item.path}
+						<button
 							class={style.link}
+							id={`${item.title}-dropdown`}
 						>
 							{item.title}
 							<Icon name='fluent:chevron-down-12-filled' />
-						</a>
+						</button>
+
+						<menu class='submenu hidden'>
+							{item.children.map((item) => {
+								return (
+									<li>
+										<a
+											href={item.path}
+											class={style.link}
+										>
+											{item.title}
+										</a>
+									</li>
+								);
+							})}
+						</menu>
 					</li>
 				) : (
 					<li>
@@ -54,11 +70,24 @@ const { menuOptions } = Astro.props;
 	</menu>
 </div>
 
-<script>
-	const menuButton = document.getElementById("menu-button");
-	const menu = document.getElementById("mobile-menu");
+<style>
+	button {
+		padding-left: 0;
+	}
 
-	menuButton?.addEventListener("click", (event) => {
-		menu?.classList.toggle("mobile-hidden");
-	});
+	.submenu {
+		padding-left: var(--spacing-md);
+	}
+
+	.submenu > li {
+		list-style: none;
+	}
+
+	.hidden {
+		display: none;
+	}
+</style>
+
+<script>
+	import "./MobileDropdown";
 </script>
