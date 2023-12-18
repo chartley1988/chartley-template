@@ -15,8 +15,6 @@ submenus.forEach((entry) => {
 	const button = document.getElementById(`${entry.title}-dropdown`);
 	const submenu = button.parentElement.children[1];
 
-	console.log(button, submenu);
-
 	button.addEventListener("click", (event) => {
 		submenu.classList.toggle("hidden");
 	});
@@ -25,10 +23,10 @@ submenus.forEach((entry) => {
 function handleClickMenuButton(e) {
 	e.stopPropagation();
 	if (isOpen) {
-		menu?.classList.add("mobile-hidden");
-		isOpen = false;
+		closeAllMenus();
 	} else {
 		document.addEventListener("click", handleClickOutside);
+		document.addEventListener("keydown", handleEscapeKey);
 		menu?.classList.remove("mobile-hidden");
 		isOpen = true;
 	}
@@ -36,15 +34,32 @@ function handleClickMenuButton(e) {
 
 function handleClickOutside(event) {
 	event.stopPropagation();
-	console.log(event.target.closest("#mobile-menu"));
 	if (isOpen) {
 		if (
 			event.target.closest("#mobile-menu") === null &&
 			event.target.closest("#menu-button") === null
 		) {
-			document.removeEventListener("click", handleClickOutside);
-			menu.classList.add("mobile-hidden");
-			isOpen = false;
+			closeAllMenus();
 		}
 	}
+}
+
+function handleEscapeKey(event) {
+	if (event.key === "Escape") {
+		closeAllMenus();
+        document.removeEventListener("keydown", handleEscapeKey);
+        menuButton.focus();
+	}
+}
+
+function closeAllMenus() {
+	submenus.forEach((entry) => {
+		const button = document.getElementById(`${entry.title}-dropdown`);
+		const submenu = button.parentElement.children[1];
+		submenu.classList.add("hidden");
+	});
+
+	document.removeEventListener("click", handleClickOutside);
+	menu.classList.add("mobile-hidden");
+	isOpen = false;
 }

@@ -1,5 +1,4 @@
 ---
-import style from "./DesktopNav.module.css";
 import { Icon } from "astro-icon";
 
 type menuOptionsType = {
@@ -15,22 +14,47 @@ interface Props {
 const { menuOptions } = Astro.props;
 ---
 
-<div class={style.container}>
+<div
+	class='container'
+	id='desktop-menu'
+	data-options={JSON.stringify(menuOptions)}
+>
 	<menu>
 		{
 			menuOptions.map((item, index) => {
 				return item.children ? (
 					<li>
-						<button class={style.link}>
+						<button
+							class='link'
+							id={`${item.title}-dropdown-desktop`}
+						>
 							{item.title}
 							<Icon name='fluent:chevron-down-12-filled' />
 						</button>
+
+						<menu
+							class='submenu hidden desktop-dropdown'
+							id={`${item.title}-menu-desktop`}
+						>
+							{item.children.map((item) => {
+								return (
+									<li>
+										<a
+											href={item.path}
+											class='link'
+										>
+											{item.title}
+										</a>
+									</li>
+								);
+							})}
+						</menu>
 					</li>
 				) : (
 					<li>
 						<a
 							href={item.path}
-							class={style.link}
+							class='link'
 						>
 							{item.title}
 						</a>
@@ -40,3 +64,70 @@ const { menuOptions } = Astro.props;
 		}
 	</menu>
 </div>
+
+<style>
+	.hidden {
+		display: none;
+	}
+	.container {
+		display: none;
+	}
+
+	.container > menu {
+		display: flex;
+		flex-direction: row;
+		gap: 1.5em;
+		list-style: none;
+
+		font-size: 1.25rem;
+		color: var(--ui-);
+	}
+
+	.link {
+		text-decoration: none;
+		color: var(--ui-text-low-contrast);
+
+		display: flex;
+		align-items: center;
+		gap: 0.25em;
+	}
+
+	.link > svg {
+		height: 1em;
+		width: auto;
+	}
+
+	.link:hover, .link:focus {
+		color: var(--primary-11);
+		font-weight: 600;
+	}
+
+	li {
+		position: relative;
+	}
+
+	.submenu {
+		padding: var(--spacing-md);
+		width: max-content;
+		position: absolute;
+		top: 48px;
+		background-color: var(--ui-element-bg);
+		box-shadow: var(--shadow-sm);
+		border-radius: var(--radius-sm);
+	}
+
+	.submenu > li {
+		list-style: none;
+	}
+
+	@media (min-width: 1024px) {
+		.container {
+			display: flex;
+			justify-content: center;
+		}
+	}
+</style>
+
+<script>
+	import "./DesktopDropdown";
+</script>

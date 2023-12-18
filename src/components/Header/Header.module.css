@@ -1,6 +1,6 @@
 header.container {
 	background-color: var(--ui-bg-subtle);
-	min-height: 48px;
+	min-height: var(--header-height);
 	padding: 0.5rem 1rem;
 
 	/* Only applicable in mobile */
@@ -36,6 +36,10 @@ header.container {
 .letterhead > img {
 	height: 1em;
 	width: auto;
+}
+
+.letterhead > div {
+	min-width: max-content;
 }
 
 @media (min-width: 640px) {
