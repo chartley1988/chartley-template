@@ -57,7 +57,7 @@ const { title, logo } = Astro.props;
 		<Header
 			siteName={summary.siteName}
 			logo={summary.logoURL ? summary.logoURL : undefined}
-			showSiteName={false}
+			showSiteName={true}
 		/>
 		<div class='content'>
 			<slot />
@@ -102,7 +102,7 @@ const { title, logo } = Astro.props;
 
 	:root {
 		/* COLOURS */
-		--primary-hue: 210;
+		--primary-hue: 200;
 		--primary-saturation: 40%;
 		--primary-lightness: 50%;
 		--primary: hsl(
