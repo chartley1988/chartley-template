@@ -2,6 +2,9 @@ body {
 	background-color: var(--ui-bg);
 	color: var(--ui-text-low-contrast);
 	font-family: var(--font-text);
+	min-height: 100dvh;
+	display: flex;
+	flex-direction: column;
 }
 
 hr {
@@ -11,6 +14,14 @@ hr {
 
 h1,h2,h3,h4,h5,h6 {
 	font-family: var(--font-headings);
+}
+
+h1 {
+	margin: var(--spacing-lg) 0;
+}
+
+h2 {
+	margin: var(--spacing-md) 0;
 }
 
 p {

@@ -60,7 +60,9 @@ const { title, logo } = Astro.props;
 			showSiteName={true}
 		/>
 		<div class='content'>
-			<slot />
+			<main class='container'>
+				<slot />
+			</main>
 		</div>
 		<Footer
 			siteName={summary.siteName}

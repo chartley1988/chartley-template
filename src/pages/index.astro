@@ -1,40 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import PalettePreview from "../components/PalettePreview.astro";
-import Card from "../components/Card.astro";
-import Button from "../components/Button.astro";
+import MoodBoard from "../mockups/MoodBoard.astro";
 ---
 
 <Layout title='Welcome to Astro.'>
-	<main class='container'>
-		<h1>Website Title</h1>
-		<h2>Sub title</h2>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-			Pellentesque volutpat, ipsum vel finibus egestas, libero risus
-			rhoncus tellus, a pretium risus urna vitae purus. Fusce et quam eget
-			augue interdum accumsan. Maecenas sapien dui, gravida ut pretium ac,
-			pretium ac odio. Fusce dictum, ante eu fringilla iaculis, risus
-			turpis dapibus purus, ut fermentum ipsum dui vel dui. Aliquam
-			finibus, odio in finibus faucibus, orci quam mattis leo, sed blandit
-			nunc justo et enim. Nullam facilisis dictum consequat. Donec vel
-			arcu metus. Donec sed lacus consectetur, dapibus diam non, malesuada
-			mi. Nulla nulla ligula, consequat ac commodo a, fermentum id felis.
-			Mauris sodales leo ligula, non tincidunt sem cursus in. Maecenas vel
-			mi lorem. Sed in orci mattis mauris egestas sagittis.
-		</p>
-		<Card>Hello! This is a card</Card>
-		<Button colour='primary'>Sample Button</Button>
-		<Button colour='accent'>Sample Button</Button>
-	</main>
+	<MoodBoard />
 </Layout>
 
 <style>
-	h1 {
-		margin: 2rem 0;
-	}
-
-	p {
-		margin: 2rem 0;
-	}
+	
 </style>

@@ -1,0 +1,56 @@
+---
+import Button from "../components/Button.astro";
+import Card from "../components/Card.astro";
+
+interface Props {}
+
+const {} = Astro.props;
+---
+
+<h1>Mood Board</h1>
+
+<section>
+	<h2>Buttons</h2>
+	<div class='buttons'>
+		<Button colour='primary'>Primary</Button>
+		<Button colour='accent'>Accent</Button>
+		<Button colour='none'>Colourless</Button>
+	</div>
+</section>
+
+<section>
+	<h2>Cards</h2>
+	<div class="flex-row">
+		<Card>Hello! This is a card</Card>
+		<Card>
+			<strong>A Card with a title</strong>
+			<hr>
+			Hello! This is a card
+		</Card>
+
+	</div>
+</section>
+
+<section>
+	<h2>Paragraph</h2>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+		volutpat, ipsum vel finibus egestas, libero risus rhoncus tellus, a
+		pretium risus urna vitae purus. Fusce et quam eget augue interdum
+		accumsan. Maecenas sapien dui, gravida ut pretium ac, pretium ac odio.
+		Fusce dictum, ante eu fringilla iaculis, risus turpis dapibus purus, ut
+		fermentum ipsum dui vel dui. Aliquam finibus, odio in finibus faucibus,
+		orci quam mattis leo, sed blandit nunc justo et enim.
+	</p>
+</section>
+
+<style>
+	section {
+		margin: var(--spacing-lg) 0;
+	}
+
+	.buttons {
+		display: flex;
+		gap: var(--spacing-sm);
+	}
+</style>
