@@ -5,6 +5,7 @@ import "../styles/reset.css";
 import "../styles/colours.css";
 import "../styles/main.css";
 import "../styles/utilities.css";
+import "../styles/theme.css"
 import Header from "../components/Header/Header.astro";
 import Footer from "../components/Footer/Footer.astro";
 import { string } from "astro/zod";
@@ -83,69 +84,3 @@ const { title, logo } = Astro.props;
 	dark_mode.updateColourTheme(userPreference);
 	dark_mode.onUserChange();
 </script>
-
-<style is:global>
-	/* UI Colour theme, default is Nickel */
-	.light-theme,
-	.dark-theme {
-		--ui-bg: var(--slate-1);
-		--ui-bg-subtle: var(--slate-2);
-		--ui-element-bg: var(--slate-3);
-		--ui-element-bg-hovered: var(--slate-4);
-		--ui-element-bg-active: var(--slate-5);
-		--ui-border-subtle: var(--slate-6);
-		--ui-border: var(--slate-7);
-		--ui-border-hovered: var(--slate-8);
-		--ui-bg-solid: var(--slate-9);
-		--ui-bg-solid-hovered: var(--slate-10);
-		--ui-text-low-contrast: var(--slate-11);
-		--ui-text-high-contrast: var(--slate-12);
-	}
-
-	:root {
-		/* COLOURS */
-		--primary-hue: 200;
-		--primary-saturation: 40%;
-		--primary-lightness: 50%;
-		--primary: hsl(
-			var(--primary-hue),
-			var(--primary-saturation),
-			var(--primary-lightness)
-		);
-
-		--font-text: "Poppins", sans-serif;
-		--font-headings: "PT Sans", sans-serif;
-
-		/* 
-		Replace These values for custom accent colour, otherwise a default complimentary one is assigned. 
-		*/
-		--accent-hue: calc(var(--primary-hue) + 180);
-		--accent: hsl(
-			var(--accent-hue),
-			var(--primary-saturation),
-			var(--primary-lightness)
-		);
-
-		--spacing-sm: 0.25rem;
-		--spacing-md: 1rem;
-		--spacing-lg: 2.5rem;
-
-		/* SHADOWS */
-		--shadow-sm: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
-			rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-		--shadow-md: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
-			rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
-
-		/* CORNER RADIUS */
-		--radius-sm: 0.25rem;
-		--radius-md: 0.75rem;
-		--radius-lg: 1.5rem/1.25rem;
-
-		/* LAYOUT VARIABLES */
-		--header-height: 48px;
-	}
-	.content {
-		padding-top: max(4vh, 1rem);
-		padding-bottom: max(8vh, 2rem);
-	}
-</style>

@@ -1,6 +1,6 @@
 ## Customizing This Theme
 
-Most of the customization is done in the "Layout" file in the layouts folder. Here you can change default colours, fonts, spacing, and more. At the top of the file, edit the metadata to have site-wide impacts. 
+Most of the customization is done in the theme.css file. Here you can change default colours, fonts, spacing, and more. At the top of the Layout page, edit the metadata to have site-wide impacts. I'll probably move this to its own file out of the layout file, and the layout file will import it.
 
 ## Using Colours
 

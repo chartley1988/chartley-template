@@ -1,12 +1,14 @@
 ---
 interface Props {
 	colour: "primary" | "accent" | "none";
+	hideBackground?: true | false;
+	hideBorder?: true | false;
 }
 
-const { colour } = Astro.props;
+const { colour, hideBackground = false, hideBorder = false } = Astro.props;
 ---
 
-<div class={`btn ${colour}`}>
+<div class:list={[`btn ${colour}`, {hideBackground}, {hideBorder}]}>
 	<slot />
 </div>
 
@@ -18,47 +20,68 @@ const { colour } = Astro.props;
 		padding: 0.25rem 1rem;
 		width: max-content;
 		height: 44px;
-		border-radius: var(--radius-md);
+		border-radius: var(--button-radius);
+		border: solid var(--button-border);
 		transition-duration: 0.3s;
+		color: var(--ui-text-high-contrast);
 	}
+	
 
 	.btn:hover {
 		transition-duration: 0.3s;
 	}
 
 	.none {
+		border-color: var(--ui-border);
 		background-color: var(--ui-element-bg);
-		border: var(--ui-border) solid 1px;
 	}
 
 	.none:hover {
 		background-color: var(--ui-element-bg-hovered);
 		box-shadow:
-			var(--ui-border-hovered) 0px 1px 2px inset,
-			var(--ui-border-hovered) 0px 0px 0px 2px inset;
+			var(--ui-border-hovered) 0px var(--button-border)
+				var(--button-border) inset,
+			var(--ui-border-hovered) 0px 0px 0px var(--button-border) inset;
 	}
 
 	.primary {
 		background-color: var(--primary-3);
-		border: var(--primary-7) solid 1px;
+		border-color: var(--primary-7);
 	}
 
 	.primary:hover {
 		background-color: var(--primary-4);
 		box-shadow:
-			var(--primary-8) 0px 1px 2px inset,
-			var(--primary-8) 0px 0px 0px 2px inset;
+			var(--primary-8) 0px var(--button-border) var(--button-border) inset,
+			var(--primary-8) 0px 0px 0px var(--button-border) inset;
 	}
 
 	.accent {
 		background-color: var(--accent-3);
-		border: var(--accent-7) solid 1px;
+		border-color: var(--accent-7);
 	}
 
 	.accent:hover {
 		background-color: var(--accent-4);
 		box-shadow:
-			var(--accent-8) 0px 1px 2px inset,
-			var(--accent-8) 0px 0px 0px 2px inset;
+			var(--accent-8) 0px var(--button-border) var(--button-border) inset,
+			var(--accent-8) 0px 0px 0px var(--button-border) inset;
+	}
+
+	.hideBackground {
+		background: none;
+	}
+
+	.hideBackground:hover, .hideBackground:focus {
+		background: none;
+	}
+
+	.hideBorder {
+		border: none;
+	}
+
+	.hideBorder:hover, .hideBackground:focus {
+		border: none;
+		box-shadow: none;
 	}
 </style>

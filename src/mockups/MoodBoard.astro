@@ -12,22 +12,31 @@ const {} = Astro.props;
 <section>
 	<h2>Buttons</h2>
 	<div class='buttons'>
-		<Button colour='primary'>Primary</Button>
-		<Button colour='accent'>Accent</Button>
-		<Button colour='none'>Colourless</Button>
+		<Button colour='primary'><a href="" class="buttons">Primary</a></Button>
+		<Button
+			colour='accent'
+			hideBorder={true}
+		>
+			Accent
+		</Button>
+		<Button
+			colour='none'
+			hideBackground={true}
+		>
+			<button>Colourless</button>
+		</Button>
 	</div>
 </section>
 
 <section>
 	<h2>Cards</h2>
-	<div class="flex-row">
+	<div class='flex-row'>
 		<Card>Hello! This is a card</Card>
 		<Card>
 			<strong>A Card with a title</strong>
-			<hr>
-			Hello! This is a card
+			<hr />
+			 Hello! This is a card
 		</Card>
-
 	</div>
 </section>
 
@@ -49,8 +58,13 @@ const {} = Astro.props;
 		margin: var(--spacing-lg) 0;
 	}
 
-	.buttons {
+	div.buttons {
 		display: flex;
 		gap: var(--spacing-sm);
+	}
+
+	a.buttons {
+		text-decoration: none;
+		color: var(--ui-text-high-contrast);
 	}
 </style>
