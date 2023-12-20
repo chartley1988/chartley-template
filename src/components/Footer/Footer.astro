@@ -10,7 +10,7 @@ interface Props {
 
 const { siteName, logo, showSiteName = true } = Astro.props;
 
-const group1 = {
+const services = {
 	heading: "Services",
 	items: [
 		{
@@ -28,7 +28,7 @@ const group1 = {
 	],
 };
 
-const group2 = {
+const navigation = {
 	heading: "Navigation",
 	items: [
 		{
@@ -84,9 +84,9 @@ const socials = {
 		</div>
 
 		<div class='grid'>
-			<FooterList data={group1} />
+			<FooterList data={navigation} />
 
-			<FooterList data={group2} />
+			<FooterList data={services} />
 
 			<FooterList data={socials} />
 
