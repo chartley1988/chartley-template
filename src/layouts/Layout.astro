@@ -5,7 +5,7 @@ import "../styles/reset.css";
 import "../styles/colours.css";
 import "../styles/main.css";
 import "../styles/utilities.css";
-import "../styles/theme.css"
+import "../styles/theme.css";
 import Header from "../components/Header/Header.astro";
 import Footer from "../components/Footer/Footer.astro";
 import { string } from "astro/zod";
@@ -51,6 +51,7 @@ const { title, logo } = Astro.props;
 		/>
 		<title>{title}</title>
 	</head>
+
 	<body
 		id='page-body'
 		class='no-js'
@@ -60,11 +61,14 @@ const { title, logo } = Astro.props;
 			logo={summary.logoURL ? summary.logoURL : undefined}
 			showSiteName={true}
 		/>
+
+		<!-- Content -->
 		<div class='content'>
-			<main class='container'>
+			<main>
 				<slot />
 			</main>
 		</div>
+
 		<Footer
 			siteName={summary.siteName}
 			logo={summary.logoURL ? summary.logoURL : undefined}
