@@ -1,31 +1,36 @@
 /* TODO: Add modifier for saturation. Shouldn't force vibrant colours on the theme */
+:root {
+	--primary-hue: 170;
+	--primary-saturation: 40%;
+	--primary-lightness: 50%;
+
+	/* 
+    Replace These values for custom accent colour, otherwise a default complimentary one is assigned. 
+    */
+	--accent-hue: calc(var(--primary-hue) + 180);
+}
 
 .light-theme {
-	--primary-1: hsl(0, 100%, 99%);
-	--primary-2: hsl(calc(var(--primary-hue) - 3), 100%, 98%);
-	--primary-3: hsl(var(--primary-hue), 92%, 95%);
-	--primary-4: hsl(calc(var(--primary-hue) + 2), 100%, 91%);
-	--primary-5: hsl(calc(var(--primary-hue) + 1), 100%, 88%);
-	--primary-6: hsl(calc(var(--primary-hue) + 1), 95%, 84%);
-	--primary-7: hsl(var(--primary-hue), 82%, 78%);
-	--primary-8: hsl(var(--primary-hue), 75%, 70%);
-	--primary-9: hsl(var(--primary-hue), 78%, 54%);
-	--primary-10: hsl(var(--primary-hue), 73%, 51%);
-	--primary-11: hsl(var(--primary-hue), 82%, 45%);
-	--primary-12: hsl(calc(var(--primary-hue) - 2), 50%, 24%);
+	/* How much to change color when hovered, override this in dark mode to something like 0.8 */
+	--hover-factor: 1.2;
 
-	--accent-1: hsl(0, 100%, 99%);
-	--accent-2: hsl(calc(var(--accent-hue) - 3), 100%, 98%);
-	--accent-3: hsl(var(--accent-hue), 92%, 95%);
-	--accent-4: hsl(calc(var(--accent-hue) + 2), 100%, 91%);
-	--accent-5: hsl(calc(var(--accent-hue) + 1), 100%, 88%);
-	--accent-6: hsl(calc(var(--accent-hue) + 1), 95%, 84%);
-	--accent-7: hsl(var(--accent-hue), 82%, 78%);
-	--accent-8: hsl(var(--accent-hue), 75%, 70%);
-	--accent-9: hsl(var(--accent-hue), 78%, 54%);
-	--accent-10: hsl(var(--accent-hue), 73%, 51%);
-	--accent-11: hsl(var(--accent-hue), 82%, 45%);
-	--accent-12: hsl(calc(var(--accent-hue) - 2), 50%, 24%);
+	--primary: hsl(
+		var(--primary-hue),
+		var(--primary-saturation),
+		var(--primary-lightness)
+	);
+
+	--primary-hovered: hsl(
+		var(--primary-hue),
+		var(--primary-saturation),
+		calc(var(--primary-lightness) * var(--hover-factor))
+	);
+
+	--accent: hsl(
+		var(--accent-hue),
+		var(--primary-saturation),
+		var(--primary-lightness)
+	);
 
 	--nickel-1: #fdfdfc;
 	--nickel-2: #f9f9f8;
@@ -55,31 +60,17 @@
 }
 
 .dark-theme {
-	--primary-1: hsl(0, 17%, 8%);
-	--primary-2: hsl(var(--primary-hue), 24%, 10%);
-	--primary-3: hsl(calc(var(--primary-hue) - 5), 48%, 15%);
-	--primary-4: hsl(calc(var(--primary-hue) - 6), 64%, 19%);
-	--primary-5: hsl(calc(var(--primary-hue) - 5), 62%, 23%);
-	--primary-6: hsl(calc(var(--primary-hue) - 3), 55%, 28%);
-	--primary-7: hsl(calc(var(--primary-hue) - 1), 49%, 35%);
-	--primary-8: hsl(var(--primary-hue), 50%, 45%);
-	--primary-9: hsl(var(--primary-hue), 78%, 54%);
-	--primary-10: hsl(calc(var(--primary-hue) + 1), 82%, 59%);
-	--primary-11: hsl(calc(var(--primary-hue) + 2), 100%, 75%);
-	--primary-12: hsl(var(--primary-hue), 86%, 89%);
+	--primary: hsl(
+		var(--primary-hue),
+		var(--primary-saturation),
+		var(--primary-lightness)
+	);
 
-	--accent-1: hsl(0, 17%, 8%);
-	--accent-2: hsl(var(--accent-hue), 24%, 10%);
-	--accent-3: hsl(calc(var(--accent-hue) - 5), 48%, 15%);
-	--accent-4: hsl(calc(var(--accent-hue) - 6), 64%, 19%);
-	--accent-5: hsl(calc(var(--accent-hue) - 5), 62%, 23%);
-	--accent-6: hsl(calc(var(--accent-hue) - 3), 55%, 28%);
-	--accent-7: hsl(calc(var(--accent-hue) - 1), 49%, 35%);
-	--accent-8: hsl(var(--accent-hue), 50%, 45%);
-	--accent-9: hsl(var(--accent-hue), 78%, 54%);
-	--accent-10: hsl(calc(var(--accent-hue) + 1), 82%, 59%);
-	--accent-11: hsl(calc(var(--accent-hue) + 2), 100%, 75%);
-	--accent-12: hsl(var(--accent-hue), 86%, 89%);
+	--accent: hsl(
+		var(--accent-hue),
+		var(--primary-saturation),
+		var(--primary-lightness)
+	);
 
 	--nickel-1: #111110;
 	--nickel-2: #191918;
@@ -109,33 +100,19 @@
 }
 
 @media (prefers-color-scheme: dark) {
+	--primary: hsl(
+		var(--primary-hue),
+		var(--primary-saturation),
+		var(--primary-lightness)
+	);
+
+	--accent: hsl(
+		var(--accent-hue),
+		var(--primary-saturation),
+		var(--primary-lightness)
+	);
+
 	.no-js {
-		--primary-1: hsl(0, 17%, 8%);
-		--primary-2: hsl(var(--primary-hue), 24%, 10%);
-		--primary-3: hsl(calc(var(--primary-hue) - 5), 48%, 15%);
-		--primary-4: hsl(calc(var(--primary-hue) - 6), 64%, 19%);
-		--primary-5: hsl(calc(var(--primary-hue) - 5), 62%, 23%);
-		--primary-6: hsl(calc(var(--primary-hue) - 3), 55%, 28%);
-		--primary-7: hsl(calc(var(--primary-hue) - 1), 49%, 35%);
-		--primary-8: hsl(var(--primary-hue), 50%, 45%);
-		--primary-9: hsl(var(--primary-hue), 78%, 54%);
-		--primary-10: hsl(calc(var(--primary-hue) + 1), 82%, 59%);
-		--primary-11: hsl(calc(var(--primary-hue) + 2), 100%, 75%);
-		--primary-12: hsl(var(--primary-hue), 86%, 89%);
-
-		--accent-1: hsl(0, 17%, 8%);
-		--accent-2: hsl(var(--accent-hue), 24%, 10%);
-		--accent-3: hsl(calc(var(--accent-hue) - 5), 48%, 15%);
-		--accent-4: hsl(calc(var(--accent-hue) - 6), 64%, 19%);
-		--accent-5: hsl(calc(var(--accent-hue) - 5), 62%, 23%);
-		--accent-6: hsl(calc(var(--accent-hue) - 3), 55%, 28%);
-		--accent-7: hsl(calc(var(--accent-hue) - 1), 49%, 35%);
-		--accent-8: hsl(var(--accent-hue), 50%, 45%);
-		--accent-9: hsl(var(--accent-hue), 78%, 54%);
-		--accent-10: hsl(calc(var(--accent-hue) + 1), 82%, 59%);
-		--accent-11: hsl(calc(var(--accent-hue) + 2), 100%, 75%);
-		--accent-12: hsl(var(--accent-hue), 86%, 89%);
-
 		--nickel-1: #111110;
 		--nickel-2: #191918;
 		--nickel-3: #222221;

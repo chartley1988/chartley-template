@@ -16,33 +16,13 @@
 }
 
 :root {
-	/* COLOURS */
-	--primary-hue: 200;
-	--primary-saturation: 40%;
-	--primary-lightness: 50%;
-	--primary: hsl(
-		var(--primary-hue),
-		var(--primary-saturation),
-		var(--primary-lightness)
-	);
-
-	/* 
-    Replace These values for custom accent colour, otherwise a default complimentary one is assigned. 
-    */
-	--accent-hue: calc(var(--primary-hue) + 180);
-	--accent: hsl(
-		var(--accent-hue),
-		var(--primary-saturation),
-		var(--primary-lightness)
-	);
-
 	/* FONT SETTINGS */
 	--font-text: "Poppins", sans-serif;
 	--font-headings: "PT Sans", sans-serif;
 
-    /* SPACING */
-	--spacing-sm: 0.25rem;
-	--spacing-md: 1rem;
+	/* SPACING */
+	--spacing-sm: 0.5rem;
+	--spacing-md: 1.5rem;
 	--spacing-lg: 2.5rem;
 
 	/* SHADOWS */
@@ -50,16 +30,17 @@
 		rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 	--shadow-md: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
 		rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+	--shadow-lg: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 
 	/* CORNER RADIUS */
 	--radius-sm: 0.25rem;
 	--radius-md: 0.75rem;
 	--radius-lg: 1.5rem/1.25rem;
 
-    /* BUTTON SETTINGS */
-    --button-radius: var(--radius-sm);
-    --button-border: 1px;
-    
+	/* BUTTON SETTINGS */
+	--button-radius: 0;
+	--button-border: 2px;
+
 	/* LAYOUT VARIABLES */
 	--header-height: 48px;
 }

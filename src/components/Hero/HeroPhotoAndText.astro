@@ -1,0 +1,68 @@
+---
+import { Image } from "astro:assets";
+import hero from "../../assets/images/hero.webp";
+import Button from "../Button.astro";
+---
+
+<div class='hero light-theme'>
+	<div class='container'>
+		<div>
+			<p class='text1'>
+				Bringing <strong>elegance</strong> to your space
+			</p>
+			<div class='flex-row'>
+				<Button
+					colour='primary'
+					hideBackground
+				>
+					Learn More
+				</Button>
+				<Button
+					colour='primary'
+					hideBorder
+				>
+					Call Now
+				</Button>
+			</div>
+		</div>
+		<Image
+			src={hero}
+			alt='Hero Image'
+			class='hero'
+		/>
+	</div>
+</div>
+
+<style>
+	.hero > div {
+		display: flex;
+		flex-direction: column-reverse;
+		align-items: start;
+		gap: var(--spacing-md);
+
+	}
+
+	img.hero {
+		width: 100%;
+		height: auto;
+		box-shadow: var(--shadow-md);
+	}
+
+	.text1 {
+		font-size: 1.75rem;
+		line-height: 1.9rem;
+		margin: 1rem 0;
+	}
+
+	@media only screen and (min-width: 1024px) {
+		.hero > div {
+			flex-direction: row;
+			align-items: center;
+		}
+
+		img.hero {
+			width: 50%;
+			box-shadow: var(--shadow-lg);
+		}
+	}
+</style>
