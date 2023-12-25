@@ -80,7 +80,10 @@ const socials = {
 					}
 				</style>
 			</svg>
-			{showSiteName && <div>{siteName}</div>}
+			<div class="flex-column">
+				{showSiteName && <div>{siteName}</div>}
+				<p>Copyright 2023 Tamarack Designs</p>
+			</div>
 		</div>
 
 		<div class='grid'>
@@ -124,14 +127,16 @@ const socials = {
 
 	.logo {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		align-items: start;
-		justify-content: center;
+		justify-content: start;
 		color: var(--ui-text-low-contrast);
 	}
 
 	.logo > *:first-child {
-		max-height: 150px;
+		width: 48px;
+		height: auto;
+		max-height: 100px;
 	}
 
 	.bottom-text {
@@ -153,8 +158,20 @@ const socials = {
 			align-items: center;
 		}
 
+		.logo {
+			grid-column: 1/2;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		.logo > :first-child {
+			height: 100%;
+			width: auto;
+		}
+
 		.flex-responsive {
 			flex-direction: row;
+			align-items: center;
 			gap: var(--spacing-lg);
 		}
 	}
@@ -163,6 +180,13 @@ const socials = {
 
 		.logo {
 			grid-column: 1/2;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		.logo > :first-child {
+			height: 100%;
+			width: auto;
 		}
 
 		.bottom-text {
