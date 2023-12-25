@@ -15,13 +15,19 @@ import Button from "../Button.astro";
 					colour='primary'
 					hideBackground
 				>
-					Learn More
+					<a href=''> Learn More</a>
 				</Button>
 				<Button
 					colour='primary'
 					hideBorder
 				>
-					Call Now
+					<a
+						href=''
+						class='dark-theme'
+						style="color: white"
+					>
+						Call Now</a
+					>
 				</Button>
 			</div>
 		</div>
@@ -34,12 +40,35 @@ import Button from "../Button.astro";
 </div>
 
 <style>
+	.hero {
+		color: var(--ui-text-low-contrast);
+	}
+
+	strong {
+		color: hsl(
+			var(--primary-hue),
+			var(--primary-saturation),
+			calc(var(--primary-lightness) * 0.7)
+		);
+	}
+
 	.hero > div {
 		display: flex;
 		flex-direction: column-reverse;
 		align-items: start;
 		gap: var(--spacing-md);
+	}
 
+	a {
+		text-decoration: none;
+		font-weight: 900;
+		font-size: 1.25rem;
+		color: var(--ui-text-high-contrast);
+		height: 100%;
+		width: 100%;
+
+		display: flex;
+		align-items: center;
 	}
 
 	img.hero {
@@ -55,14 +84,28 @@ import Button from "../Button.astro";
 	}
 
 	@media only screen and (min-width: 1024px) {
+		.hero {
+			background-color: hsla(
+				var(--primary-hue),
+				var(--primary-saturation),
+				calc(var(--primary-lightness) * 1.9),
+				1
+			);
+			box-shadow: var(--shadow-lg);
+		}
+
 		.hero > div {
 			flex-direction: row;
 			align-items: center;
+			padding: 2rem;
+			border-radius: 2rem;
 		}
 
 		img.hero {
-			width: 50%;
-			box-shadow: var(--shadow-lg);
+			width: 450px;
+			height: auto;
+			box-shadow: none;
+			clip-path: polygon(29% 0, 100% 0, 100% 100%, 0 100%);
 		}
 	}
 </style>
