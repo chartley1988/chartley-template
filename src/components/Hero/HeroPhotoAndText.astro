@@ -4,7 +4,7 @@ import hero from "../../assets/images/hero.webp";
 import Button from "../Button.astro";
 ---
 
-<div class='hero light-theme'>
+<div class='hero'>
 	<div class='container'>
 		<div>
 			<p class='text1'>
@@ -85,12 +85,7 @@ import Button from "../Button.astro";
 
 	@media only screen and (min-width: 1024px) {
 		.hero {
-			background-color: hsla(
-				var(--primary-hue),
-				var(--primary-saturation),
-				calc(var(--primary-lightness) * 1.9),
-				1
-			);
+			background-color: var(--ui-element-bg);
 			box-shadow: var(--shadow-lg);
 		}
 
