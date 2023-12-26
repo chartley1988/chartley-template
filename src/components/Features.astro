@@ -1,5 +1,13 @@
 ---
+import { Image, type LocalImageProps } from "astro:assets";
 import Card from "./Card.astro";
+import fence from '../assets/images/fence.webp'
+import deck from '../assets/images/hero.webp'
+import patio from '../assets/images/patio.webp'
+import pergola from '../assets/images/pergola.webp'
+import type { ImageMetadata } from "astro";
+
+
 
 interface Props {
 	cardSize?: {
@@ -15,7 +23,7 @@ interface contentType {
 	icon?: string;
 	text: string;
 	photo?: {
-		url: string;
+		file: ImageMetadata;
 		alt: string;
 	};
 }
@@ -24,23 +32,32 @@ const content: contentType[] = [
 	{
 		title: "Decks",
 		text: "Custom built decks to beautifully transform your home!",
-		photo: { url: "../src/assets/images/hero.webp", alt: "Photo of a deck" },
+		photo: {
+			file: deck,
+			alt: "Photo of a deck",
+		},
 	},
 	{
 		title: "Fences",
 		text: "Multiple designs to choose from, made from pressure treated, cedar, or composite.",
-		photo: { url: "../src/assets/images/fence.webp", alt: "Photo of a deck" },
+		photo: {
+			file: fence,
+			alt: "Photo of a deck",
+		},
 	},
 	{
 		title: "Patios",
 		text: "Transform your patio into a place you want to hang out.",
-		photo: { url: "../src/assets/images/patio.webp", alt: "Photo of a deck" },
+		photo: {
+			file: patio,
+			alt: "Photo of a deck",
+		},
 	},
 	{
 		title: "Pergolas",
 		text: "Give your yard or deck the shade it needs.",
 		photo: {
-			url: "../src/assets/images/pergola.webp",
+			file: pergola,
 			alt: "Photo of a deck",
 		},
 	},
@@ -58,9 +75,11 @@ const content: contentType[] = [
 							<p>{item.text}</p>
 						</div>
 						{item.photo && (
-							<img
-								src={item.photo.url}
+							<Image
+								src={item.photo.file}
 								alt={item.photo.alt}
+								width={Number(cardSize.width)}
+								height={Number(cardSize.height)}
 							/>
 						)}
 					</div>
