@@ -17,17 +17,18 @@ const {
 	faceUp = true,
 } = Astro.props;
 
-const id = Math.random().toString(36).slice(2, 11);
+const uniqueID = Math.random().toString(36).slice(2, 11);
 let vertical = false;
 if (Astro.props.flipDirection === "vertical") {
 	vertical = true;
 }
 ---
 
-<div class='wrapper'>
+<div class='wrapper' >
 	<div
-		class='container'
-		id={id}
+		class='container flip-card'
+		id={uniqueID}
+		data-props={JSON.stringify(Astro.props)}
 	>
 		{/* Card Back */}
 		<div
@@ -54,36 +55,8 @@ if (Astro.props.flipDirection === "vertical") {
 	</div>
 </div>
 
-<script define:vars={{ id, hoverFlip, faceUp }}>
-	let flipped = true;
-	faceUp ? (flipped = false) : (flipped = true);
-	let flipEnabled = true;
-
-	const card = document.getElementById(`${id}`);
-	const back = card.children[0];
-	const front = card.children[1];
-
-	if (hoverFlip === false) {
-		[back, front].forEach((side) => {
-			side.addEventListener("click", handleClick);
-		});
-	}
-
-	function handleClick(event) {
-		console.log(flipped);
-
-		event.stopPropagation();
-		if (flipped) {
-			flipped = false;
-			back.classList.add("flipped");
-			front.classList.remove("flipped");
-		} else {
-			flipped = true;
-			back.classList.remove("flipped");
-			front.classList.add("flipped");
-		}
-		console.log(flipped);
-	}
+<script>
+	import './FlipCard'
 </script>
 
 <style
