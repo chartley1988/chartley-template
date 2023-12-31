@@ -26,13 +26,18 @@ if (Astro.props.flipDirection === "vertical") {
 	>
 		{/* Card Back */}
 		<div
-			class:list={["back flipped dark-theme", { vertical }, { pattern }]}
+			class:list={[
+				"back flipped dark-theme",
+				{ vertical },
+				{ pattern },
+				{ hoverFlip },
+			]}
 		>
 			<slot name='back' />
 		</div>
 
 		{/* Card Front */}
-		<div class:list={["front", { vertical }]}>
+		<div class:list={["front", { vertical }, { hoverFlip }]}>
 			<slot name='front' />
 		</div>
 	</div>
@@ -46,13 +51,17 @@ if (Astro.props.flipDirection === "vertical") {
 	const back = card.children[0];
 	const front = card.children[1];
 
-	if (hoverFlip === false) {
-		[back, front].forEach((side) => {
-			side.addEventListener("click", handleClick);
-		});
-	} else {
-		card.addEventListener("mouseover", handleMouseOver);
-	}
+	// if (hoverFlip === false) {
+	// 	[back, front].forEach((side) => {
+	// 		side.addEventListener("click", handleClick);
+	// 	});
+	// } else {
+	// 	card.addEventListener("mouseover", handleMouseOver);
+	// }
+
+	[back, front].forEach((side) => {
+		side.addEventListener("click", handleClick);
+	});
 
 	function handleClick(event) {
 		event.stopPropagation();
@@ -67,61 +76,61 @@ if (Astro.props.flipDirection === "vertical") {
 		}
 	}
 
-	function handleMouseOver(event) {
-		if (flipEnabled) {
-			event.stopPropagation();
-			flipEnabled = false;
-			[back, front].forEach((side) => {
-				side.addEventListener("transitionend", handleTransition);
-			});
+	// function handleMouseOver(event) {
+	// 	if (flipEnabled) {
+	// 		event.stopPropagation();
+	// 		flipEnabled = false;
+	// 		[back, front].forEach((side) => {
+	// 			side.addEventListener("transitionend", handleTransition);
+	// 		});
 
-			if (flipped) {
-				flipped = false;
-				back.classList.add("flipped");
-				front.classList.remove("flipped");
-			} else {
-				flipped = true;
-				back.classList.remove("flipped");
-				front.classList.add("flipped");
-			}
-			function handleTransition() {
-				card.addEventListener("mouseleave", handleMouseLeave);
-				card.removeEventListener("mouseover", handleMouseOver);
-				[back, front].forEach((side) => {
-					side.removeEventListener("transitionend", handleTransition);
-				});
-				flipEnabled = true;
-			}
-		}
-	}
+	// 		if (flipped) {
+	// 			flipped = false;
+	// 			back.classList.add("flipped");
+	// 			front.classList.remove("flipped");
+	// 		} else {
+	// 			flipped = true;
+	// 			back.classList.remove("flipped");
+	// 			front.classList.add("flipped");
+	// 		}
+	// 		function handleTransition() {
+	// 			card.addEventListener("mouseleave", handleMouseLeave);
+	// 			card.removeEventListener("mouseover", handleMouseOver);
+	// 			[back, front].forEach((side) => {
+	// 				side.removeEventListener("transitionend", handleTransition);
+	// 			});
+	// 			flipEnabled = true;
+	// 		}
+	// 	}
+	// }
 
-	function handleMouseLeave(event) {
-		if (flipEnabled) {
-			event.stopPropagation();
-			flipEnabled = false;
-			[back, front].forEach((side) => {
-				side.addEventListener("transitionend", handleTransition);
-			});
+	// function handleMouseLeave(event) {
+	// 	if (flipEnabled) {
+	// 		event.stopPropagation();
+	// 		flipEnabled = false;
+	// 		[back, front].forEach((side) => {
+	// 			side.addEventListener("transitionend", handleTransition);
+	// 		});
 
-			if (flipped) {
-				flipped = false;
-				back.classList.add("flipped");
-				front.classList.remove("flipped");
-			} else {
-				flipped = true;
-				back.classList.remove("flipped");
-				front.classList.add("flipped");
-			}
-			function handleTransition() {
-				card.removeEventListener("mouseleave", handleMouseLeave);
-				card.addEventListener("mouseover", handleMouseOver);
-				[back, front].forEach((side) => {
-					side.removeEventListener("transitionend", handleTransition);
-				});
-				flipEnabled = true;
-			}
-		}
-	}
+	// 		if (flipped) {
+	// 			flipped = false;
+	// 			back.classList.add("flipped");
+	// 			front.classList.remove("flipped");
+	// 		} else {
+	// 			flipped = true;
+	// 			back.classList.remove("flipped");
+	// 			front.classList.add("flipped");
+	// 		}
+	// 		function handleTransition() {
+	// 			card.removeEventListener("mouseleave", handleMouseLeave);
+	// 			card.addEventListener("mouseover", handleMouseOver);
+	// 			[back, front].forEach((side) => {
+	// 				side.removeEventListener("transitionend", handleTransition);
+	// 			});
+	// 			flipEnabled = true;
+	// 		}
+	// 	}
+	// }
 </script>
 
 <style define:vars={{ width: cardSize.width, height: cardSize.height }}>
@@ -189,6 +198,45 @@ if (Astro.props.flipDirection === "vertical") {
 	.back.flipped.vertical {
 		transform: perspective(1000px) rotateX(180deg);
 	}
+
+
+
+
+    /* Hover Logic */
+    .container > .front.hoverFlip {
+		transform: perspective(1000px) rotateY(0deg);
+	}
+
+	.container:hover > .front.hoverFlip {
+		transform: perspective(1000px) rotateY(-180deg);
+	}
+
+	.container:hover > .back.hoverFlip {
+		transform: perspective(1000px) rotateY(0deg);
+	}
+
+	.container > .back.hoverFlip {
+		transform: perspective(1000px) rotateY(180deg);
+	}
+
+    .container > .front.hoverFlip.vertical {
+		transform: perspective(1000px) rotateX(0deg);
+	}
+
+	.container:hover > .front.hoverFlip.vertical {
+		transform: perspective(1000px) rotateX(-180deg);
+	}
+
+	.container:hover > .back.hoverFlip.vertical {
+		transform: perspective(1000px) rotateX(0deg);
+	}
+
+	.container > .back.hoverFlip.vertical {
+		transform: perspective(1000px) rotateX(180deg);
+	}
+
+
+  
 
 	.pattern {
 		background-color: #2c2a30;
