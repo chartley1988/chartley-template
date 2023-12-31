@@ -14,6 +14,7 @@ hr {
 
 h1,h2,h3,h4,h5,h6 {
 	font-family: var(--font-headings);
+	color: var(--ui-text-low-contrast);
 }
 
 h1 {
@@ -28,6 +29,7 @@ p {
 	max-width: 70ch;
 	line-height: 1.6;
 	font-size: 16px;
+	color: var(--ui-text-low-contrast);
 }
 
 button {

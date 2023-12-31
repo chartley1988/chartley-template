@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import HeroPhotoAndText from "../components/Hero/HeroPhotoAndText.astro";
 import PalettePreview from "../components/PalettePreview.astro";
 import Features from "../components/Features.astro";
+import FlipCard from "../components/Cards/FlipCard.astro";
 ---
 
 <Layout title='Welcome to Astro.'>
@@ -10,9 +11,76 @@ import Features from "../components/Features.astro";
 	<HeroPhotoAndText />
 	<Features />
 
-	<div class="container">
+	<!-- Flip Cards -->
+	<div class='container flipCardGrid'>
+		<FlipCard>
+			<div slot='front'>
+				<h2>Click to flip me!</h2>
+				<p>
+					This is the front! Borders and colors are easily
+					customizable.
+				</p>
+			</div>
+			<div slot='back'>
+				<h2>Back</h2>
+				<p>
+					And this is the back! by default, dark theme is applied to
+					the back of the card. This is easily removed.
+				</p>
+			</div>
+		</FlipCard>
 
+		<FlipCard
+			pattern={true}
+			hoverFlip={true}
+		>
+			<div slot='front'>
+				<h2>Hover to flip me!</h2>
+				<p>
+					The back of this card has a pattern on it. Flip it over to
+					check it out!
+				</p>
+			</div>
+			<div slot='back'>
+				<h2>Back</h2>
+				<p>
+					How cool is that? It's easy to customize the pattern on the
+					back. Especially using hero patterns.
+				</p>
+			</div>
+		</FlipCard>
+
+		<FlipCard cardSize={{ width: "250px", height: "400px" }}>
+			<div slot='front'>
+				<h2>Front</h2>
+				 You can also customize the size of the card using the cardSize
+				prop.
+			</div>
+			<div slot='back'>
+				<h2>Back</h2>
+				<p>
+					Make sure you set the card grid size to accommodate the size
+					of card.
+				</p>
+			</div>
+		</FlipCard>
+
+		<FlipCard flipDirection='vertical'>
+			<div slot='front'>
+				<h2>Front</h2>
+				 Use flipDirection prop to set to either 'vertical' or
+				'horizontal'. Horizontal is the default.
+			</div>
+			<div slot='back'>
+				<h2>Back</h2>
+				<p>
+					Use slots named 'front' and 'back' to put content on cards
+				</p>
+			</div>
+		</FlipCard>
 	</div>
+
+	<div class='container'></div>
 
 	<!-- Services -->
 	<div class='services'>
@@ -25,4 +93,13 @@ import Features from "../components/Features.astro";
 	</div>
 </Layout>
 
+<style>
+	.flipCardGrid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, 250px);
+		gap: var(--spacing-md);
 
+		margin-top: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+</style>
