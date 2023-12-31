@@ -1,15 +1,20 @@
 ---
+import type { boolean } from "astro/zod";
 interface Props {
 	flipDirection?: "horizontal" | "vertical";
 	cardSize?: { width: string; height: string }; // Must be in the format '48px'
 	pattern?: boolean;
 	hoverFlip?: boolean;
+	flipSpeed?: number;
+	faceUp?: boolean;
 }
 
 const {
 	cardSize = { width: "250px", height: "350px" },
 	pattern = false,
 	hoverFlip = false,
+	flipSpeed = 0.7,
+	faceUp = true,
 } = Astro.props;
 
 const id = Math.random().toString(36).slice(2, 11);
@@ -26,25 +31,32 @@ if (Astro.props.flipDirection === "vertical") {
 	>
 		{/* Card Back */}
 		<div
-			class:list={[
-				"back flipped dark-theme",
-				{ vertical },
-				{ pattern },
-				{ hoverFlip },
-			]}
+			class:list={faceUp
+				? [
+						"back flipped dark-theme",
+						{ vertical },
+						{ pattern },
+						{ hoverFlip },
+					]
+				: ["back dark-theme", { vertical }, { pattern }, { hoverFlip }]}
 		>
 			<slot name='back' />
 		</div>
 
 		{/* Card Front */}
-		<div class:list={["front", { vertical }, { hoverFlip }]}>
+		<div
+			class:list={faceUp
+				? ["front", { vertical }, { hoverFlip }]
+				: ["front flipped", { vertical }, { hoverFlip }]}
+		>
 			<slot name='front' />
 		</div>
 	</div>
 </div>
 
-<script define:vars={{ id, hoverFlip }}>
-	let flipped = false;
+<script define:vars={{ id, hoverFlip, faceUp }}>
+	let flipped = true;
+	faceUp ? (flipped = false) : (flipped = true);
 	let flipEnabled = true;
 
 	const card = document.getElementById(`${id}`);
@@ -58,6 +70,8 @@ if (Astro.props.flipDirection === "vertical") {
 	}
 
 	function handleClick(event) {
+		console.log(flipped);
+
 		event.stopPropagation();
 		if (flipped) {
 			flipped = false;
@@ -68,10 +82,17 @@ if (Astro.props.flipDirection === "vertical") {
 			back.classList.remove("flipped");
 			front.classList.add("flipped");
 		}
+		console.log(flipped);
 	}
 </script>
 
-<style define:vars={{ width: cardSize.width, height: cardSize.height }}>
+<style
+	define:vars={{
+		width: cardSize.width,
+		height: cardSize.height,
+		speed: `${flipSpeed}s`,
+	}}
+>
 	.wrapper {
 		width: var(--width);
 		height: var(--height);
@@ -85,7 +106,7 @@ if (Astro.props.flipDirection === "vertical") {
 
 	.front,
 	.back {
-		--border-width: 6px;
+		--border-width: 12px;
 		--border-color: var(--ui-border);
 		--card-padding: 0.75rem;
 		position: absolute;
@@ -95,7 +116,7 @@ if (Astro.props.flipDirection === "vertical") {
 		padding: calc(var(--border-width) + var(--card-padding));
 		-webkit-backface-visibility: hidden;
 		backface-visibility: hidden;
-		transition: transform 0.8s ease;
+		transition: transform var(--speed) ease;
 
 		background-color: var(--ui-element-bg);
 		border-radius: var(--radius-lg);

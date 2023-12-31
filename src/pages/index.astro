@@ -50,6 +50,19 @@ import FlipCard from "../components/Cards/FlipCard.astro";
 			</div>
 		</FlipCard>
 
+		<FlipCard flipSpeed={5}>
+			<div slot='front'>
+				<h2>Slow Motion</h2>
+				<p>The speed of the flip can be easily changed too.</p>
+			</div>
+			<div slot='back'>
+				<p>
+					Just change the 'flipSpeed' prop to a number of seconds.
+					0.7s is the default.
+				</p>
+			</div>
+		</FlipCard>
+
 		<FlipCard cardSize={{ width: "250px", height: "400px" }}>
 			<div slot='front'>
 				<h2>Front</h2>
@@ -65,7 +78,7 @@ import FlipCard from "../components/Cards/FlipCard.astro";
 			</div>
 		</FlipCard>
 
-		<FlipCard flipDirection='vertical' hoverFlip={true}>
+		<FlipCard flipDirection='vertical'>
 			<div slot='front'>
 				<h2>Front</h2>
 				 Use flipDirection prop to set to either 'vertical' or
@@ -75,6 +88,21 @@ import FlipCard from "../components/Cards/FlipCard.astro";
 				<h2>Back</h2>
 				<p>
 					Use slots named 'front' and 'back' to put content on cards
+				</p>
+			</div>
+		</FlipCard>
+
+		<FlipCard faceUp={false}>
+			<div slot='front'>
+				<h2>Face Down</h2>
+				<p>
+					You can determine whether a card is flipped by default or not.
+				</p>
+			</div>
+			<div slot='back'>
+				<h2>Back</h2>
+				<p>
+					Set 'faceUp' prop as true or false to determine starting face.
 				</p>
 			</div>
 		</FlipCard>
@@ -98,6 +126,7 @@ import FlipCard from "../components/Cards/FlipCard.astro";
 		display: grid;
 		grid-template-columns: repeat(auto-fit, 250px);
 		gap: var(--spacing-md);
+		justify-content: center;
 
 		margin-top: 1.5rem;
 		margin-bottom: 1.5rem;
