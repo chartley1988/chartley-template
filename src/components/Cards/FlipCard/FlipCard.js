@@ -3,7 +3,6 @@ flipCards.forEach((card) => {
 	const props = JSON.parse(card.dataset.props);
 
 	let flipped = true;
-    console.log(props.faceUp);
 	if (props.faceUp !== false) {
 		flipped = false;
 	}
@@ -19,8 +18,6 @@ flipCards.forEach((card) => {
 	}
 
 	function handleClick(event) {
-		console.log(flipped);
-
 		event.stopPropagation();
 		if (flipped) {
 			flipped = false;

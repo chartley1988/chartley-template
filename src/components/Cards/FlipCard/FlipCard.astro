@@ -7,6 +7,8 @@ interface Props {
 	hoverFlip?: boolean;
 	flipSpeed?: number;
 	faceUp?: boolean;
+	borderWidth?: string;
+	borderRadius?: string;
 }
 
 const {
@@ -15,6 +17,8 @@ const {
 	hoverFlip = false,
 	flipSpeed = 0.7,
 	faceUp = true,
+	borderWidth = '16px',
+	borderRadius = 'var(--radius-md)'
 } = Astro.props;
 
 const uniqueID = Math.random().toString(36).slice(2, 11);
@@ -64,6 +68,8 @@ if (Astro.props.flipDirection === "vertical") {
 		width: cardSize.width,
 		height: cardSize.height,
 		speed: `${flipSpeed}s`,
+		borderWidth: borderWidth,
+		radius: borderRadius,
 	}}
 >
 	.wrapper {
@@ -79,20 +85,20 @@ if (Astro.props.flipDirection === "vertical") {
 
 	.front,
 	.back {
-		--border-width: 12px;
+		--border-width: var(--borderWidth);
 		--border-color: var(--ui-border);
-		--card-padding: 0.75rem;
+		--card-padding: 1.2;
 		position: absolute;
 		box-sizing: border-box;
 		width: 100%;
 		height: 100%;
-		padding: calc(var(--border-width) + var(--card-padding));
+		padding: calc(var(--border-width) * var(--card-padding));
 		-webkit-backface-visibility: hidden;
 		backface-visibility: hidden;
 		transition: transform var(--speed) ease;
 
 		background-color: var(--ui-element-bg);
-		border-radius: var(--radius-lg);
+		border-radius: var(--radius);
 		box-shadow: var(--shadow-md);
 		border: var(--border-width) solid var(--border-color);
 
