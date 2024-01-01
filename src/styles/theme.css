@@ -35,7 +35,7 @@
 	/* CORNER RADIUS */
 	--radius-sm: 0.25rem;
 	--radius-md: 0.75rem;
-	--radius-lg: 1.5rem/1.25rem;
+	--radius-lg: 1.5rem;
 
 	/* BUTTON SETTINGS */
 	--button-radius: 0;
@@ -44,7 +44,4 @@
 	/* LAYOUT VARIABLES */
 	--header-height: 48px;
 }
-.content {
-	padding-top: max(4vh, 1rem);
-	padding-bottom: max(8vh, 2rem);
-}
+
