@@ -1,11 +1,9 @@
 ---
 import { Image, type LocalImageProps } from "astro:assets";
 import Card from "../Cards/Card.astro";
-import fence from '../../assets/images/fence.webp'
-import deck from '../../assets/images/hero.webp'
-import patio from '../../assets/images/patio.webp'
-import pergola from '../../assets/images/pergola.webp'
-import type { ImageMetadata } from "astro";
+
+import { getCollection, getEntry } from 'astro:content';
+const content = await getCollection('services');
 
 
 
@@ -18,50 +16,7 @@ interface Props {
 
 const { cardSize = { width: "200px", height: "250px" } } = Astro.props;
 
-interface contentType {
-	title: string;
-	icon?: string;
-	text: string;
-	photo?: {
-		file: ImageMetadata;
-		alt: string;
-	};
-}
 
-const content: contentType[] = [
-	{
-		title: "Decks",
-		text: "Custom built decks to beautifully transform your home!",
-		photo: {
-			file: deck,
-			alt: "Photo of a deck",
-		},
-	},
-	{
-		title: "Fences",
-		text: "Multiple designs to choose from, made from pressure treated, cedar, or composite.",
-		photo: {
-			file: fence,
-			alt: "Photo of a deck",
-		},
-	},
-	{
-		title: "Patios",
-		text: "Transform your patio into a place you want to hang out.",
-		photo: {
-			file: patio,
-			alt: "Photo of a deck",
-		},
-	},
-	{
-		title: "Pergolas",
-		text: "Give your yard or deck the shade it needs.",
-		photo: {
-			file: pergola,
-			alt: "Photo of a deck",
-		},
-	},
-];
 ---
 
 <div class='container feature-grid'>
@@ -71,13 +26,13 @@ const content: contentType[] = [
 				<Card>
 					<div class='card-grid'>
 						<div class='content'>
-							<h2>{item.title}</h2>
-							<p>{item.text}</p>
+							<h2>{item.data.title}</h2>
+							<p>{item.data.description}</p>
 						</div>
-						{item.photo && (
+						{item.data.picture && (
 							<Image
-								src={item.photo.file}
-								alt={item.photo.alt}
+								src={item.data.picture}
+								alt={item.data.description}
 								width={Number(cardSize.width)}
 								height={Number(cardSize.height)}
 							/>

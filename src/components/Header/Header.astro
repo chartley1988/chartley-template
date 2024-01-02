@@ -4,6 +4,9 @@ import DesktopNav from "./DesktopNav/DesktopNav.astro";
 import ContactButton from "./ContactButton.astro";
 import MobileNav from "./MobileNav/MobileNav.astro";
 
+import { getCollection, getEntry } from 'astro:content';
+const content = await getCollection('services');
+
 interface Props {
 	siteName: string;
 	showSiteName?: boolean;
@@ -27,16 +30,12 @@ const menuOptions: menuOptionsType[] = [
 	{
 		title: "Services",
 		path: "/",
-		children: [
-			{
-				title: "Design",
-				path: "/",
-			},
-			{
-				title: "Customer Service",
-				path: "/",
-			},
-		],
+		children: content.map(entry => {
+			return {
+				title: entry.data.title,
+				path: `/services/${entry.data.title.toLowerCase()}`,
+			}
+		})
 	},
 	{
 		title: "About",
