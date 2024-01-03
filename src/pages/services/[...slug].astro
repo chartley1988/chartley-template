@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -14,11 +15,86 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 // const { Content } = await entry.render();
 ---
+
 <Layout title={`Tamarack - ${entry.data.title}`}>
-	<div class="container">
+	<div class='container'>
 		<h1>{entry.data.title}</h1>
-		<p>
+		<p class='description'>
 			{entry.data.description}
 		</p>
+
+		<div class='content'>
+			{
+				entry.data.content &&
+					entry.data.content.map((content) => {
+						return (
+							<section>
+								{content.heading && <h2>{content.heading}</h2>}
+								<div class='section-content'>
+									<p class='content-text'>{content.text}</p>
+									{content.image && (
+										<Image
+											src={content.image}
+											alt={"Whatever"}
+											class='content-image'
+										/>
+									)}
+								</div>
+							</section>
+						);
+					})
+			}
+		</div>
 	</div>
 </Layout>
+
+<style>
+	h1 {
+		font-size: 2rem;
+	}
+
+	section {
+		margin: var(--spacing-lg) 0;
+	}
+	.section-content {
+		display: flex;
+		flex-direction: column;
+
+		gap: var(--spacing-md);
+	}
+	.content-text {
+	}
+
+	.content-image {
+		height: auto;
+		object-fit: cover;
+	}
+
+	@media (min-width: 1024px) {
+		h1 {
+			font-size: 3rem;
+			line-height: 3rem;
+			margin-bottom: 0;
+			color: var(--ui-text-high-contrast);
+		}
+
+		.description {
+			font-size: 1.7rem;
+			padding-top: 0;
+			padding-left: 1rem;
+			line-height: 1.7;
+			color: var(--ui-text-low-contrast);
+		}
+		.section-content {
+			flex-direction: row;
+		}
+
+		.content-image {
+			width: 40%;
+		}
+
+		section:nth-child(odd) > .section-content {
+			flex-direction: row-reverse;
+		}
+	}
+</style>

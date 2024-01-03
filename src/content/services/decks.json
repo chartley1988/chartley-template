@@ -1,5 +1,17 @@
 {
 	"title": "Decks",
 	"description": "Beautiful decks to transform your yard",
-	"picture": "../../assets/images/hero.webp"
+	"picture": "../../assets/images/hero.webp",
+	"content": [
+		{
+			"heading": "New Builds",
+			"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sagittis risus nec est vehicula hendrerit quis ut elit. Nullam bibendum scelerisque metus sit amet sodales. Aliquam finibus elit ac nisi bibendum, placerat sagittis nulla varius. Morbi enim justo, pulvinar pulvinar neque ac, suscipit eleifend tellus. Phasellus at erat erat. Donec euismod, purus at condimentum congue, orci magna semper ex, in fermentum leo sapien id augue. Aliquam erat volutpat. Sed egestas dolor in posuere iaculis. Sed felis odio, porttitor id ex eu, dictum pulvinar enim. Cras in ante tempor, pharetra turpis in, mollis urna. Aenean at lectus elementum, maximus neque vitae, pretium nunc. ",
+			"image": "../../assets/images/hero.webp"
+		},
+		{
+			"heading": "Expansions",
+			"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sagittis risus nec est vehicula hendrerit quis ut elit. Nullam bibendum scelerisque metus sit amet sodales. Aliquam finibus elit ac nisi bibendum, placerat sagittis nulla varius. Morbi enim justo, pulvinar pulvinar neque ac, suscipit eleifend tellus. Phasellus at erat erat. Donec euismod, purus at condimentum congue, orci magna semper ex, in fermentum leo sapien id augue. Aliquam erat volutpat. Sed egestas dolor in posuere iaculis. Sed felis odio, porttitor id ex eu, dictum pulvinar enim. Cras in ante tempor, pharetra turpis in, mollis urna. Aenean at lectus elementum, maximus neque vitae, pretium nunc. ",
+			"image": "../../assets/images/hero.webp"
+		}
+	]
 }

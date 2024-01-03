@@ -9,6 +9,15 @@ const servicesCollection = defineCollection({
 			title: z.string(),
 			description: z.string(),
 			picture: image().optional(),
+			content: z
+				.array(
+					z.object({
+						heading: z.string().optional(),
+						text: z.string(),
+						image: image().optional(),
+					})
+				)
+				.optional(),
 		}),
 });
 
