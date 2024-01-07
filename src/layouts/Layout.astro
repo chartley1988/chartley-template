@@ -9,6 +9,7 @@ import "../styles/theme.css";
 import Header from "../components/Header/Header.astro";
 import Footer from "../components/Footer/Footer.astro";
 import { string } from "astro/zod";
+import summary from '../data/summary'
 interface Props {
 	title: string;
 	logo?: string;
@@ -19,13 +20,12 @@ interface summaryTypes {
 	logoURL?: string;
 }
 // SITE SETTINGS --------------------//
-const summary = {
-	siteName: "Tamarack Productions",
-	logoURL: "/favicon.svg",
-};
+
 // ----------------------------------//
 
 const { title, logo } = Astro.props;
+
+
 ---
 
 <!doctype html>

@@ -1,0 +1,26 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import summary from "../../data/summary";
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+	const allPosts = await getCollection("blog");
+
+	return allPosts.map((entry) => ({
+		params: { slug: entry.data.url },
+		props: { entry },
+	}));
+}
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={`${summary.siteName} - Blog: ${entry.data.title}`}>
+	<div class='container'>
+		<h1>{entry.data.title}</h1>
+		<p>{entry.data.date.toISOString().slice(0, 10)}</p>
+		<Content />
+	</div>
+</Layout>
