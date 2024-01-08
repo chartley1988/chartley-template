@@ -85,7 +85,7 @@ const blogPosts = await getCollection("blog");
 	} else {
 		const prevTarget = Number(page) - 1;
 		const link = document.createElement("a");
-		link.setAttribute("href", `/blog?page=${prevTarget}`);
+		link.setAttribute("href", `/blog?page=${prevTarget}&show=${quantity}`);
 		link.textContent = "Previous Page"
 		navContainer.append(link);
 	}
@@ -98,7 +98,7 @@ const blogPosts = await getCollection("blog");
 	} else {
 		const nextTarget = Number(page) + 1;
 		const link = document.createElement('a');
-		link.setAttribute("href", `/blog?page=${nextTarget}`);
+		link.setAttribute("href", `/blog?page=${nextTarget}&show=${quantity}`);
 		link.textContent = "Next Page"
 		navContainer.append(link);
 	}
