@@ -13,4 +13,4 @@ The services collection generates content throughout the site, including the fol
 Add new blog entries by adding them to `content/blog`. Any filenames preceded with an underscore will **not** be published. 
 
 ### List of Entries
-At build, an index of blog posts is generated. How many pages of posts there are is determined by the variable `quantityDisplayed` in the file `/src/pages/blog/[page].astro`. By default, 6 posts are shown per page. If you choose to customize the page with a more text based list rather than the default cards in this file, then you may want to increase number of posts.
+At build, an index of blog posts is generated. How many pages of posts there are is determined by the variable `quantityDisplayed` in the file `/src/pages/blog/[page].astro`. By default, 6 posts are shown per page. If you choose to customize the page with a more text based list rather than the default cards in this file, then you may want to increase number of posts. The size of the card elements can be customized by changing the `cardSize` variable, the default is 200px.

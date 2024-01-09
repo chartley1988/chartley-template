@@ -1,4 +1,5 @@
 ---
+// Styles
 import "@fontsource/poppins";
 import "@fontsource/pt-sans";
 import "../styles/reset.css";
@@ -6,35 +7,38 @@ import "../styles/colors.css";
 import "../styles/main.css";
 import "../styles/utilities.css";
 import "../styles/theme.css";
+// Components
 import Header from "../components/Header/Header.astro";
 import Footer from "../components/Footer/Footer.astro";
-import { string } from "astro/zod";
-import summary from '../data/summary'
+// SEO Stuff
+import summary from "../data/summary";
+import { SEO } from "astro-seo";
 interface Props {
 	title: string;
 	logo?: string;
+	description?: string;
 }
 
-interface summaryTypes {
-	siteName: string;
-	logoURL?: string;
-}
-// SITE SETTINGS --------------------//
-
-// ----------------------------------//
-
-const { title, logo } = Astro.props;
-
-
+const { title, logo, description = summary.description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang='en'>
 	<head>
-		<meta charset='UTF-8' />
-		<meta
-			name='description'
-			content='Astro description'
+		<SEO
+			title={title},
+			titleDefault={summary.siteName},
+			titleTemplate={`${summary.siteName} - %s`},
+			charset="UTF-8",
+			description={description}
+			openGraph={{
+				basic: {
+					title: `${summary.siteName}`,
+					type: 'website',
+					image: `${summary.logoURL}`,
+					url: `${summary.url}`
+				}
+			}}
 		/>
 		<meta
 			name='viewport'
@@ -49,7 +53,6 @@ const { title, logo } = Astro.props;
 			name='generator'
 			content={Astro.generator}
 		/>
-		<title>{title}</title>
 	</head>
 
 	<body
@@ -74,32 +77,31 @@ const { title, logo } = Astro.props;
 			logo={summary.logoURL ? summary.logoURL : undefined}
 			showSiteName={true}
 		/>
+		<script>
+			import dark_mode from "../utilities/check_dark_mode";
+
+			// If JS enabled, remove 'no-js' class
+			const page_body = document.getElementById("page-body");
+			if (page_body) page_body.className = "";
+
+			const userPreference = dark_mode.checkUserPreference();
+			dark_mode.updateColourTheme(userPreference);
+			dark_mode.onUserChange();
+		</script>
+
+		<style>
+			main {
+				flex: 1;
+
+				display: flex;
+				flex-direction: column;
+			}
+
+			.content {
+				display: flex;
+				flex-direction: column;
+				justify-content: stretch;
+			}
+		</style>
 	</body>
 </html>
-
-<script>
-	import dark_mode from "../utilities/check_dark_mode";
-
-	// If JS enabled, remove 'no-js' class
-	const page_body = document.getElementById("page-body");
-	if (page_body) page_body.className = "";
-
-	const userPreference = dark_mode.checkUserPreference();
-	dark_mode.updateColourTheme(userPreference);
-	dark_mode.onUserChange();
-</script>
-
-<style>
-	main {
-		flex: 1;
-
-		display: flex;
-		flex-direction: column;
-	}
-
-	.content {
-		display: flex;
-		flex-direction: column;
-		justify-content: stretch;
-	}
-</style>

@@ -7,8 +7,12 @@ import type { arrayOutputType } from "astro/zod";
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
+
+	// ================================
+	// Page Settings
 	const quantityDisplayed = 6;
 	const cardSize = 200;
+	// ================================
 
 	const allPosts = await getCollection("blog");
 	allPosts.sort(function (a, b) {
@@ -41,7 +45,7 @@ export async function getStaticPaths() {
 const { page, pageNumber, lastPage, cardSize } = Astro.props;
 ---
 
-<Layout title={`${summary.siteName} - Blog: `}>
+<Layout title={`Blog (Page ${pageNumber})`}>
 	<div class='container'>
 		<!-- Navigation Buttons -->
 		<div class='navigation'>

@@ -3,6 +3,7 @@ import style from "./Header.module.css";
 import DesktopNav from "./DesktopNav/DesktopNav.astro";
 import ContactButton from "./ContactButton.astro";
 import MobileNav from "./MobileNav/MobileNav.astro";
+import Button from "../Button.astro";
 
 import { getCollection, getEntry } from 'astro:content';
 const content = await getCollection('services');
@@ -74,6 +75,15 @@ const menuOptions: menuOptionsType[] = [
 		{logo == undefined && <div>{siteName}</div>}
 	</div>
 	<DesktopNav menuOptions={menuOptions} />
-	<ContactButton />
+	<Button colour="primary" hideBorder>
+		<a href='tel:17805320369' class="mobile-hidden contact">1.780.532.0369</a>
+	</Button>
 	<MobileNav menuOptions={menuOptions} />
 </header>
+
+<style>
+	.contact {
+		color: white;
+		text-decoration: none;
+	}
+</style>
