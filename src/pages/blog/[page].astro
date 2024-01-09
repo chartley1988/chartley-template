@@ -1,0 +1,136 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import summary from "../../data/summary";
+import type { arrayOutputType } from "astro/zod";
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+	const allPosts = await getCollection("blog");
+	allPosts.sort(function (a, b) {
+		return b.data.date.valueOf() - a.data.date.valueOf();
+	});
+
+	const show = 10;
+	let pages = Math.floor(allPosts.length / show);
+	if (pages >= 1) pages = 1;
+
+	type pageArrayType = (typeof allPosts)[];
+
+	const pageArray: pageArrayType = [];
+
+	for (let i = 0; i < allPosts.length; i += show) {
+		const chunk = allPosts.slice(i, i + show);
+		pageArray.push(chunk);
+	}
+
+	return pageArray.map((page) => ({
+		params: { page: `page-${pageArray.indexOf(page) + 1}` },
+		props: { page },
+	}));
+}
+const { page } = Astro.props;
+---
+
+<Layout title={`${summary.siteName} - Blog: `}>
+	<div class='container'>
+		<ul>
+			{
+				page.map((post) => {
+					return (
+						<li>
+							<div class='thumbnail-wrapper'>
+								<div class='thumbnail-shadow' />
+								{post.data.thumbnail && (
+									<Image
+										src={post.data.thumbnail?.image}
+										alt={post.data.thumbnail?.alt}
+										class='thumbnail'
+										width={400}
+										height={400}
+									/>
+								)}
+							</div>
+							<a href={`/blog/${post.data.url}`}>
+								<h2>{post.data.title}</h2>
+							</a>
+							<p>{post.data.date.toISOString().slice(0, 10)}</p>
+						</li>
+					);
+				})
+			}
+		</ul>
+	</div>
+</Layout>
+
+<style>
+	ul {
+		display: grid;
+		justify-content: center;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+		padding: 0;
+	}
+
+	li {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		justify-content: start;
+
+		gap: 1.5rem;
+
+		background-color: var(--ui-element-bg);
+		padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+
+		border-radius: var(--radius-sm);
+		box-shadow: var(--shadow-md);
+	}
+
+	li > :last-child {
+		font-size: 14px;
+		display: flex;
+		justify-content: end;
+	}
+
+	h2 {
+		margin: 0;
+		color: var(--ui-text-high-contrast);
+		font-size: 1.2rem;
+		line-height: 1.3rem;
+	}
+
+	a {
+		text-decoration: none;
+		flex: 1;
+	}
+
+	.thumbnail {
+		object-fit: cover;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1/1;
+		z-index: 2;
+	}
+
+	.thumbnail-wrapper {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
+	}
+
+	.thumbnail-wrapper > * {
+		grid-row: 1/2;
+		grid-column: 1/2;
+		border-radius: var(--radius-sm);
+		width: 100%;
+		aspect-ratio: 1/1;
+
+	}
+
+	.thumbnail-shadow {
+		transform: rotate(-5deg);
+		background-color: var(--primary);
+	}
+</style>

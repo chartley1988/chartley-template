@@ -29,7 +29,12 @@ const blogCollection = defineCollection({
 			url: z.string(),
 			summary: z.string(),
 			date: z.date(),
-			picture: image().optional(),
+			thumbnail: z
+				.object({
+					image: image(),
+					alt: z.string(),
+				})
+				.optional(),
 		}),
 });
 
