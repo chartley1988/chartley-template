@@ -33,10 +33,10 @@ const { title, logo, description = summary.description } = Astro.props;
 			description={description}
 			openGraph={{
 				basic: {
-					title: `${summary.siteName}`,
+					title: `${summary.siteName} - ${title}`,
 					type: 'website',
-					image: `${summary.logoURL}`,
-					url: `${summary.url}`
+					image: `opengraph.jpg`,
+					url: `${Astro.url}`
 				}
 			}}
 		/>
