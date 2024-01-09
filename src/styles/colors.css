@@ -1,6 +1,6 @@
 /* TODO: Add modifier for saturation. Shouldn't force vibrant colours on the theme */
 :root {
-	--primary-hue: 170;
+	--primary-hue: 220;
 	--primary-saturation: 40%;
 	--primary-lightness: 50%;
 

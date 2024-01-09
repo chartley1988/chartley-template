@@ -7,60 +7,111 @@ import type { arrayOutputType } from "astro/zod";
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
+	const quantityDisplayed = 6;
+
 	const allPosts = await getCollection("blog");
 	allPosts.sort(function (a, b) {
 		return b.data.date.valueOf() - a.data.date.valueOf();
 	});
 
-	const show = 10;
-	let pages = Math.floor(allPosts.length / show);
+	let pages = Math.floor(allPosts.length / quantityDisplayed);
 	if (pages >= 1) pages = 1;
 
 	type pageArrayType = (typeof allPosts)[];
 
 	const pageArray: pageArrayType = [];
 
-	for (let i = 0; i < allPosts.length; i += show) {
-		const chunk = allPosts.slice(i, i + show);
+	for (let i = 0; i < allPosts.length; i += quantityDisplayed) {
+		const chunk = allPosts.slice(i, i + quantityDisplayed);
 		pageArray.push(chunk);
 	}
 
 	return pageArray.map((page) => ({
 		params: { page: `page-${pageArray.indexOf(page) + 1}` },
-		props: { page },
+		props: {
+			page,
+			pageNumber: pageArray.indexOf(page) + 1,
+			lastPage: pageArray.length,
+		},
 	}));
 }
-const { page } = Astro.props;
+const { page, pageNumber, lastPage } = Astro.props;
 ---
 
 <Layout title={`${summary.siteName} - Blog: `}>
 	<div class='container'>
+		<!-- Navigation Buttons -->
+		<div class='navigation'>
+			{
+				pageNumber !== 1 ? (
+					<a href={`/blog/page-${String(Number(pageNumber) - 1)}`}>
+						Previous Page
+					</a>
+				) : (
+					<div />
+				)
+			}
+			{
+				pageNumber !== lastPage ? (
+					<a href={`/blog/page-${String(Number(pageNumber) + 1)}`}>
+						Next Page
+					</a>
+				) : (
+					<div />
+				)
+			}
+		</div>
+
+		<!-- List of Blog Posts -->
 		<ul>
 			{
 				page.map((post) => {
 					return (
 						<li>
-							<div class='thumbnail-wrapper'>
-								<div class='thumbnail-shadow' />
-								{post.data.thumbnail && (
-									<Image
-										src={post.data.thumbnail?.image}
-										alt={post.data.thumbnail?.alt}
-										class='thumbnail'
-										width={400}
-										height={400}
-									/>
-								)}
+							{post.data.thumbnail && (
+								<Image
+									src={post.data.thumbnail?.image}
+									alt={post.data.thumbnail?.alt}
+									class='thumbnail'
+									width={400}
+									height={400}
+								/>
+							)}
+							<div class='post-content'>
+								<a href={`/blog/${post.data.url}`}>
+									{post.data.title}
+								</a>
+								<p>
+									{post.data.date.toISOString().slice(0, 10)}
+								</p>
 							</div>
-							<a href={`/blog/${post.data.url}`}>
-								<h2>{post.data.title}</h2>
-							</a>
-							<p>{post.data.date.toISOString().slice(0, 10)}</p>
 						</li>
 					);
 				})
 			}
 		</ul>
+
+		<!-- Navigation Buttons -->
+		<div class='navigation'>
+			{
+				pageNumber !== 1 ? (
+					<a href={`/blog/page-${String(Number(pageNumber) - 1)}`}>
+						Previous Page
+					</a>
+				) : (
+					<div />
+				)
+			}
+			{
+				pageNumber !== lastPage ? (
+					<a href={`/blog/page-${String(Number(pageNumber) + 1)}`}>
+						Next Page
+					</a>
+				) : (
+					<div />
+				)
+			}
+		</div>
 	</div>
 </Layout>
 
@@ -68,7 +119,7 @@ const { page } = Astro.props;
 	ul {
 		display: grid;
 		justify-content: center;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		grid-template-columns: 250px;
 		gap: 2rem;
 		padding: 0;
 	}
@@ -79,16 +130,23 @@ const { page } = Astro.props;
 		flex-direction: column;
 		justify-content: start;
 
-		gap: 1.5rem;
-
 		background-color: var(--ui-element-bg);
-		padding: 1.5rem 1.5rem 0.5rem 1.5rem;
-
 		border-radius: var(--radius-sm);
 		box-shadow: var(--shadow-md);
+		overflow: hidden;
 	}
 
-	li > :last-child {
+	.post-content {
+		display: flex;
+		min-height: 250px;
+		flex-direction: column;
+		justify-content: space-between;
+		flex: 1;
+		gap: 1.5rem;
+		padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+	}
+
+	.post-content > :last-child {
 		font-size: 14px;
 		display: flex;
 		justify-content: end;
@@ -104,33 +162,35 @@ const { page } = Astro.props;
 	a {
 		text-decoration: none;
 		flex: 1;
+		color: var(--ui-text-high-contrast);
+		font-weight: 700;
+	}
+
+	a:hover {
+		color: var(--primary);
 	}
 
 	.thumbnail {
 		object-fit: cover;
-		width: 100%;
+		width: minmax(250px, 100%);
 		height: auto;
 		aspect-ratio: 1/1;
-		z-index: 2;
 	}
 
-	.thumbnail-wrapper {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: 1fr;
+	.navigation {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		padding: 2rem;
 	}
 
-	.thumbnail-wrapper > * {
-		grid-row: 1/2;
-		grid-column: 1/2;
-		border-radius: var(--radius-sm);
-		width: 100%;
-		aspect-ratio: 1/1;
-
+	.navigation > a {
+		flex: none;
 	}
 
-	.thumbnail-shadow {
-		transform: rotate(-5deg);
-		background-color: var(--primary);
+	@media only screen and (min-width: 640px) {
+		ul {
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	}	
 	}
 </style>
