@@ -13,4 +13,4 @@ The services collection generates content throughout the site, including the fol
 Add new blog entries by adding them to `content/blog`. Any filenames preceded with an underscore will **not** be published. 
 
 ### List of Entries
-All posts are automatically listed under the url `/blog`. This URL uses parameters. `page=1` will take you to the first page of entries. How many entries are shown on a page is dictated by `show=10`, which will show 10 entries by default.
+At build, an index of blog posts is generated. How many pages of posts there are is determined by the variable `quantityDisplayed` in the file `/src/pages/blog/[page].astro`. By default, 6 posts are shown per page. If you choose to customize the page with a more text based list rather than the default cards in this file, then you may want to increase number of posts.
