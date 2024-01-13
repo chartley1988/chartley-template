@@ -7,7 +7,6 @@ import type { arrayOutputType } from "astro/zod";
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
-
 	// ================================
 	// Page Settings
 	const quantityDisplayed = 6;
@@ -18,9 +17,6 @@ export async function getStaticPaths() {
 	allPosts.sort(function (a, b) {
 		return b.data.date.valueOf() - a.data.date.valueOf();
 	});
-
-	let pages = Math.floor(allPosts.length / quantityDisplayed);
-	if (pages >= 1) pages = 1;
 
 	type pageArrayType = (typeof allPosts)[];
 
@@ -199,10 +195,7 @@ const { page, pageNumber, lastPage, cardSize } = Astro.props;
 
 	@media only screen and (min-width: 640px) {
 		ul {
-			grid-template-columns: repeat(
-				auto-fit,
-				minmax(var(--size), 1fr)
-			);
+			grid-template-columns: repeat(auto-fit, minmax(var(--size), 1fr));
 		}
 	}
 </style>

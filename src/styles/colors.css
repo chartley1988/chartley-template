@@ -8,6 +8,8 @@
     Replace These values for custom accent colour, otherwise a default complimentary one is assigned. 
     */
 	--accent-hue: calc(var(--primary-hue) + 180);
+	--accent-saturation: 40%;
+	--accent-lightness: 50%;
 }
 
 .light-theme {
@@ -28,8 +30,8 @@
 
 	--accent: hsl(
 		var(--accent-hue),
-		var(--primary-saturation),
-		var(--primary-lightness)
+		var(--accent-saturation),
+		var(--accent-lightness)
 	);
 
 	--nickel-1: #fdfdfc;
@@ -68,8 +70,8 @@
 
 	--accent: hsl(
 		var(--accent-hue),
-		var(--primary-saturation),
-		var(--primary-lightness)
+		var(--accent-saturation),
+		var(--accent-lightness)
 	);
 
 	--nickel-1: #111110;
@@ -108,8 +110,8 @@
 
 	--accent: hsl(
 		var(--accent-hue),
-		var(--primary-saturation),
-		var(--primary-lightness)
+		var(--accemt-saturation),
+		var(--accemt-lightness)
 	);
 
 	.no-js {

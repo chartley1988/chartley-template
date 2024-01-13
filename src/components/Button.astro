@@ -89,22 +89,22 @@ const { colour, hideBackground = false, hideBorder = false } = Astro.props;
 		background-color: var(--accent);
 		--border-color: hsl(
 			var(--accent-hue),
-			var(--primary-saturation),
-			calc(var(--primary-lightness) * var(--lightness-border-modifier))
+			var(--accent-saturation),
+			calc(var(--accent-lightness) * var(--lightness-border-modifier))
 		);
 	}
 
 	.accent:hover {
 		background-color: hsl(
 			var(--accent-hue),
-			var(--primary-saturation),
-			calc(var(--primary-lightness) * var(--hover-bg))
+			var(--accent-saturation),
+			calc(var(--accent-lightness) * var(--hover-bg))
 		);
 		--border-color: hsl(
 			var(--accent-hue),
-			var(--primary-saturation),
+			var(--accent-saturation),
 			calc(
-				var(--primary-lightness) *
+				var(--accent-lightness) *
 					var(--hover-lightness-border-modifier)
 			)
 		);
