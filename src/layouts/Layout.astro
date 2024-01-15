@@ -14,94 +14,86 @@ import Footer from "../components/Footer/Footer.astro";
 import summary from "../data/summary";
 import { SEO } from "astro-seo";
 interface Props {
-	title: string;
-	logo?: string;
-	description?: string;
+  title: string;
+  logo?: string;
+  description?: string;
 }
 
 const { title, logo, description = summary.description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang='en'>
-	<head>
-		<SEO
-			title={title},
-			titleDefault={summary.siteName},
-			titleTemplate={`${summary.siteName} - %s`},
-			charset="UTF-8",
-			description={description}
-			openGraph={{
-				basic: {
-					title: `${summary.siteName} - ${title}`,
-					type: 'website',
-					image: `opengraph.jpg`,
-					url: `${Astro.url}`
-				}
-			}}
-		/>
-		<meta
-			name='viewport'
-			content='width=device-width'
-		/>
-		<link
-			rel='icon'
-			type='image/svg+xml'
-			href='/favicon.svg'
-		/>
-		<meta
-			name='generator'
-			content={Astro.generator}
-		/>
-	</head>
+<html lang="en">
+  <head>
+    <SEO
+      title={title}
+      ,
+      titleDefault={summary.siteName}
+      ,
+      titleTemplate={`${summary.siteName} - %s`}
+      ,
+      charset="UTF-8"
+      ,
+      description={description}
+      openGraph={{
+        basic: {
+          title: `${summary.siteName} - ${title}`,
+          type: "website",
+          image: `opengraph.jpg`,
+          url: `${Astro.url}`,
+        },
+      }}
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+  </head>
 
-	<body
-		id='page-body'
-		class='no-js'
-	>
-		<Header
-			siteName={summary.siteName}
-			logo={summary.logoURL ? summary.logoURL : undefined}
-			showSiteName={true}
-		/>
+  <body id="page-body" class="no-js">
+    <Header
+      siteName={summary.siteName}
+      logo={summary.logoURL ? summary.logoURL : undefined}
+      showSiteName={true}
+    />
 
-		<!-- Content -->
-		<div class='content'>
-			<main>
-				<slot />
-			</main>
-		</div>
+    <!-- Content -->
+    <div class="content">
+      <main>
+        <slot />
+      </main>
+    </div>
 
-		<Footer
-			siteName={summary.siteName}
-			logo={summary.logoURL ? summary.logoURL : undefined}
-			showSiteName={true}
-		/>
-		<script>
-			import dark_mode from "../utilities/check_dark_mode";
+    <Footer
+      siteName={summary.siteName}
+      logo={summary.logoURL ? summary.logoURL : undefined}
+      showSiteName={true}
+    />
+    <script>
+      // 	import dark_mode from "../utilities/check_dark_mode";
+      //
+      // 	// If JS enabled, remove 'no-js' class
+      // 	const page_body = document.getElementById("page-body");
+      // 	if (page_body) page_body.className = "";
+      //
+      // 	const userPreference = dark_mode.checkUserPreference();
+      // 	dark_mode.updateColourTheme(userPreference);
+      // 	dark_mode.onUserChange();
+      //
+    </script>
 
-			// If JS enabled, remove 'no-js' class
-			const page_body = document.getElementById("page-body");
-			if (page_body) page_body.className = "";
+    <style>
+      main {
+        flex: 1;
 
-			const userPreference = dark_mode.checkUserPreference();
-			dark_mode.updateColourTheme(userPreference);
-			dark_mode.onUserChange();
-		</script>
+        display: flex;
+        flex-direction: column;
+      }
 
-		<style>
-			main {
-				flex: 1;
-
-				display: flex;
-				flex-direction: column;
-			}
-
-			.content {
-				display: flex;
-				flex-direction: column;
-				justify-content: stretch;
-			}
-		</style>
-	</body>
+      .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+      }
+    </style>
+  </body>
 </html>

@@ -1,58 +1,62 @@
 body {
-	background-color: var(--ui-bg);
-	color: var(--ui-text-low-contrast);
-	font-family: var(--font-text);
-	min-height: 100dvh;
-	display: flex;
-	flex-direction: column;
+  background-color: var(--ui-bg);
+  color: var(--ui-text-low-contrast);
+  font-family: var(--font-text);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
 hr {
-	width: 90%;
-	border: 1px solid var(--ui-border-subtle);
+  width: 90%;
+  border: 1px solid var(--ui-border-subtle);
 }
 
-h1,h2,h3,h4,h5,h6 {
-	font-family: var(--font-headings);
-	color: var(--ui-text-low-contrast);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-headings);
+  color: var(--ui-text-low-contrast);
 }
 
 h1 {
-	margin: var(--spacing-lg) 0;
+  margin: var(--spacing-lg) 0;
 }
 
 h2 {
-	margin: var(--spacing-md) 0;
+  margin: var(--spacing-md) 0;
 }
 
 p {
-	max-width: 70ch;
-	line-height: 1.6;
-	font-size: 16px;
-	color: var(--ui-text-low-contrast);
+  max-width: 70ch;
+  line-height: 1.6;
+  font-size: 16px;
+  color: var(--ui-text-low-contrast);
+}
+
+a:hover {
+  color: var(--primary);
 }
 
 button {
-	color: var(--ui-text-high-contrast);
-	font-weight: 900;
+  color: var(--ui-text-high-contrast);
+  font-weight: 900;
 }
 
 @media only screen and (min-width: 640px) {
-	
 }
 
 @media only screen and (min-width: 768px) {
-	
 }
 
 @media only screen and (min-width: 1024px) {
-	
 }
 
 @media only screen and (min-width: 1280px) {
-	
 }
 
 @media only screen and (min-width: 1536px) {
-	
 }

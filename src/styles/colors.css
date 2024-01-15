@@ -1,144 +1,144 @@
 /* TODO: Add modifier for saturation. Shouldn't force vibrant colours on the theme */
 :root {
-	--primary-hue: 220;
-	--primary-saturation: 40%;
-	--primary-lightness: 50%;
+  --primary-hue: 173;
+  --primary-saturation: 58%;
+  --primary-lightness: 39%;
 
-	/* 
+  /* 
     Replace These values for custom accent colour, otherwise a default complimentary one is assigned. 
     */
-	--accent-hue: calc(var(--primary-hue) + 180);
-	--accent-saturation: 40%;
-	--accent-lightness: 50%;
+  --accent-hue: 27;
+  --accent-saturation: 87%;
+  --accent-lightness: 67%;
 }
 
 .light-theme {
-	/* How much to change color when hovered, override this in dark mode to something like 0.8 */
-	--hover-factor: 1.2;
+  /* How much to change color when hovered, override this in dark mode to something like 0.8 */
+  --hover-factor: 1.2;
 
-	--primary: hsl(
-		var(--primary-hue),
-		var(--primary-saturation),
-		var(--primary-lightness)
-	);
+  --primary: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    var(--primary-lightness)
+  );
 
-	--primary-hovered: hsl(
-		var(--primary-hue),
-		var(--primary-saturation),
-		calc(var(--primary-lightness) * var(--hover-factor))
-	);
+  --primary-hovered: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    calc(var(--primary-lightness) * var(--hover-factor))
+  );
 
-	--accent: hsl(
-		var(--accent-hue),
-		var(--accent-saturation),
-		var(--accent-lightness)
-	);
+  --accent: hsl(
+    var(--accent-hue),
+    var(--accent-saturation),
+    var(--accent-lightness)
+  );
 
-	--nickel-1: #fdfdfc;
-	--nickel-2: #f9f9f8;
-	--nickel-3: #f1f0ef;
-	--nickel-4: #e9e8e6;
-	--nickel-5: #e2e1de;
-	--nickel-6: #dad9d6;
-	--nickel-7: #cfceca;
-	--nickel-8: #bcbbb5;
-	--nickel-9: #8d8d86;
-	--nickel-10: #82827c;
-	--nickel-11: #63635e;
-	--nickel-12: #21201c;
+  --nickel-1: #fdfdfc;
+  --nickel-2: #f9f9f8;
+  --nickel-3: #f1f0ef;
+  --nickel-4: #e9e8e6;
+  --nickel-5: #e2e1de;
+  --nickel-6: #dad9d6;
+  --nickel-7: #cfceca;
+  --nickel-8: #bcbbb5;
+  --nickel-9: #8d8d86;
+  --nickel-10: #82827c;
+  --nickel-11: #63635e;
+  --nickel-12: #21201c;
 
-	--slate-1: #fcfcfd;
-	--slate-2: #f9f9fb;
-	--slate-3: #f0f0f3;
-	--slate-4: #e8e8ec;
-	--slate-5: #e0e1e6;
-	--slate-6: #d9d9e0;
-	--slate-7: #cdced6;
-	--slate-8: #b9bbc6;
-	--slate-9: #8b8d98;
-	--slate-10: #80838d;
-	--slate-11: #60646c;
-	--slate-12: #1c2024;
+  --slate-1: #fcfcfd;
+  --slate-2: #f9f9fb;
+  --slate-3: #f0f0f3;
+  --slate-4: #e8e8ec;
+  --slate-5: #e0e1e6;
+  --slate-6: #d9d9e0;
+  --slate-7: #cdced6;
+  --slate-8: #b9bbc6;
+  --slate-9: #8b8d98;
+  --slate-10: #80838d;
+  --slate-11: #60646c;
+  --slate-12: #1c2024;
 }
 
 .dark-theme {
-	--primary: hsl(
-		var(--primary-hue),
-		var(--primary-saturation),
-		var(--primary-lightness)
-	);
+  --primary: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    var(--primary-lightness)
+  );
 
-	--accent: hsl(
-		var(--accent-hue),
-		var(--accent-saturation),
-		var(--accent-lightness)
-	);
+  --accent: hsl(
+    var(--accent-hue),
+    var(--accent-saturation),
+    var(--accent-lightness)
+  );
 
-	--nickel-1: #111110;
-	--nickel-2: #191918;
-	--nickel-3: #222221;
-	--nickel-4: #2a2a28;
-	--nickel-5: #31312e;
-	--nickel-6: #3b3a37;
-	--nickel-7: #494844;
-	--nickel-8: #62605b;
-	--nickel-9: #6f6d66;
-	--nickel-10: #7c7b74;
-	--nickel-11: #b5b3ad;
-	--nickel-12: #eeeeec;
+  --nickel-1: #111110;
+  --nickel-2: #191918;
+  --nickel-3: #222221;
+  --nickel-4: #2a2a28;
+  --nickel-5: #31312e;
+  --nickel-6: #3b3a37;
+  --nickel-7: #494844;
+  --nickel-8: #62605b;
+  --nickel-9: #6f6d66;
+  --nickel-10: #7c7b74;
+  --nickel-11: #b5b3ad;
+  --nickel-12: #eeeeec;
 
-	--slate-1: #111113;
-	--slate-2: #18191b;
-	--slate-3: #212225;
-	--slate-4: #272a2d;
-	--slate-5: #2e3135;
-	--slate-6: #363a3f;
-	--slate-7: #43484e;
-	--slate-8: #5a6169;
-	--slate-9: #696e77;
-	--slate-10: #777b84;
-	--slate-11: #b0b4ba;
-	--slate-12: #edeef0;
+  --slate-1: #111113;
+  --slate-2: #18191b;
+  --slate-3: #212225;
+  --slate-4: #272a2d;
+  --slate-5: #2e3135;
+  --slate-6: #363a3f;
+  --slate-7: #43484e;
+  --slate-8: #5a6169;
+  --slate-9: #696e77;
+  --slate-10: #777b84;
+  --slate-11: #b0b4ba;
+  --slate-12: #edeef0;
 }
 
 @media (prefers-color-scheme: dark) {
-	--primary: hsl(
-		var(--primary-hue),
-		var(--primary-saturation),
-		var(--primary-lightness)
-	);
+  .no-js {
+    --primary: hsl(
+      var(--primary-hue),
+      var(--primary-saturation),
+      var(--primary-lightness)
+    );
 
-	--accent: hsl(
-		var(--accent-hue),
-		var(--accemt-saturation),
-		var(--accemt-lightness)
-	);
+    --accent: hsl(
+      var(--accent-hue),
+      var(--accent-saturation),
+      var(--accent-lightness)
+    );
 
-	.no-js {
-		--nickel-1: #111110;
-		--nickel-2: #191918;
-		--nickel-3: #222221;
-		--nickel-4: #2a2a28;
-		--nickel-5: #31312e;
-		--nickel-6: #3b3a37;
-		--nickel-7: #494844;
-		--nickel-8: #62605b;
-		--nickel-9: #6f6d66;
-		--nickel-10: #7c7b74;
-		--nickel-11: #b5b3ad;
-		--nickel-12: #eeeeec;
+    --nickel-1: #111110;
+    --nickel-2: #191918;
+    --nickel-3: #222221;
+    --nickel-4: #2a2a28;
+    --nickel-5: #31312e;
+    --nickel-6: #3b3a37;
+    --nickel-7: #494844;
+    --nickel-8: #62605b;
+    --nickel-9: #6f6d66;
+    --nickel-10: #7c7b74;
+    --nickel-11: #b5b3ad;
+    --nickel-12: #eeeeec;
 
-		--slate-1: #111113;
-		--slate-2: #18191b;
-		--slate-3: #212225;
-		--slate-4: #272a2d;
-		--slate-5: #2e3135;
-		--slate-6: #363a3f;
-		--slate-7: #43484e;
-		--slate-8: #5a6169;
-		--slate-9: #696e77;
-		--slate-10: #777b84;
-		--slate-11: #b0b4ba;
-		--slate-12: #edeef0;
-	}
+    --slate-1: #111113;
+    --slate-2: #18191b;
+    --slate-3: #212225;
+    --slate-4: #272a2d;
+    --slate-5: #2e3135;
+    --slate-6: #363a3f;
+    --slate-7: #43484e;
+    --slate-8: #5a6169;
+    --slate-9: #696e77;
+    --slate-10: #777b84;
+    --slate-11: #b0b4ba;
+    --slate-12: #edeef0;
+  }
 }

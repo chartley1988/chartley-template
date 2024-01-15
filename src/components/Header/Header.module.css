@@ -1,56 +1,56 @@
 header.container {
-	background-color: var(--ui-bg-subtle);
-	min-height: var(--header-height);
-	padding: 0.5rem 1rem;
+  background-color: var(--ui-bg-subtle);
+  min-height: var(--header-height);
+  padding: 0 var(--spacing-md);
 
-	/* Only applicable in mobile */
-	display: grid;
-	grid-template-columns: auto auto;
-	grid-template-rows: auto auto;
+  /* Only applicable in mobile */
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
 
-	justify-content: space-between;
-	align-items: center;
+  justify-content: space-between;
+  align-items: center;
 
-	box-shadow: var(--shadow-md);
-	/* border-bottom: var(--ui-border-subtle) solid 2px; */
+  box-shadow: var(--shadow-md);
+  /* border-bottom: var(--ui-border-subtle) solid 2px; */
 }
 
 .letterhead {
-	/* Only applicable in mobile */
-	grid-column: 1/2;
-	grid-row: 1/2;
+  /* Only applicable in mobile */
+  grid-column: 1/2;
+  grid-row: 1/2;
 
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	gap: 0.25em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25em;
 
-	font-size: 1.25rem;
-	font-family: var(--font-headings);
-	color: var(--ui-text-high-contrast);
+  font-size: 1.25rem;
+  font-family: var(--font-headings);
+  color: var(--ui-text-high-contrast);
 
-	word-break: keep-all;
-	width: max-content;
+  word-break: keep-all;
+  width: max-content;
 }
 
 .letterhead > img {
-	height: 1em;
-	width: auto;
+  height: 1em;
+  width: auto;
 }
 
 .letterhead > div {
-	min-width: max-content;
+  min-width: max-content;
 }
 
 @media (min-width: 640px) {
-	.letterhead {
-		font-size: 2rem;
-	}
+  .letterhead {
+    font-size: 2rem;
+  }
 }
 
 @media (min-width: 1024px) {
-	header.container {
-		display: flex;
-		flex-direction: row;
-	}
+  header.container {
+    display: flex;
+    flex-direction: row;
+  }
 }

@@ -5,85 +5,95 @@ import ContactButton from "./ContactButton.astro";
 import MobileNav from "./MobileNav/MobileNav.astro";
 import Button from "../Button.astro";
 
-import { getCollection, getEntry } from 'astro:content';
-const content = await getCollection('services');
+import { getCollection, getEntry } from "astro:content";
+const content = await getCollection("services");
 
 interface Props {
-	siteName: string;
-	showSiteName?: boolean;
-	logo?: string | undefined;
+  siteName: string;
+  showSiteName?: boolean;
+  logo?: string | undefined;
 }
 
 const { siteName, logo, showSiteName = true } = Astro.props;
 
 type menuOptionsType = {
-	title: string;
-	path: string;
-	badge?: true;
-	children?: menuOptionsType[];
+  title: string;
+  path: string;
+  badge?: true;
+  children?: menuOptionsType[];
 };
 
 const menuOptions: menuOptionsType[] = [
-	{
-		title: "Home",
-		path: "/",
-	},
-	{
-		title: 'Blog',
-		path: `/blog?page=1`
-	},
-	{
-		title: "Services",
-		path: "/",
-		children: content.map(entry => {
-			return {
-				title: entry.data.title,
-				path: `/services/${entry.data.title.toLowerCase()}`,
-			}
-		})
-	},
-	{
-		title: "About",
-		path: "/",
-		children: [
-			{
-				title: "About Us",
-				path: "/",
-			},
-			{
-				title: "Contact Us",
-				path: "/",
-			},
-		],
-	},
+  {
+    title: "Home",
+    path: "/",
+  },
+  {
+    title: "Blog",
+    path: `/blog?page=1`,
+  },
+  {
+    title: "Services",
+    path: "/",
+    children: content.map((entry) => {
+      return {
+        title: entry.data.title,
+        path: `/services/${entry.data.title.toLowerCase()}`,
+      };
+    }),
+  },
+  {
+    title: "About",
+    path: "/",
+    children: [
+      {
+        title: "About Us",
+        path: "/",
+      },
+      {
+        title: "Contact Us",
+        path: "/",
+      },
+    ],
+  },
 ];
 ---
 
 <header class={style.container}>
-	<div class={style.letterhead}>
-		{
-			logo != undefined && (
-				<>
-					<img
-						src={logo}
-						alt=''
-					/>
-					{showSiteName && <div>{siteName}</div>}
-				</>
-			)
-		}
-		{logo == undefined && <div>{siteName}</div>}
-	</div>
-	<DesktopNav menuOptions={menuOptions} />
-	<Button colour="primary" hideBorder>
-		<a href='tel:17805320369' class="mobile-hidden contact">1.780.532.0369</a>
-	</Button>
-	<MobileNav menuOptions={menuOptions} />
+  <div class={style.letterhead}>
+    {
+      logo != undefined && (
+        <>
+          <img src={logo} alt="" />
+          {showSiteName && <div>{siteName}</div>}
+        </>
+      )
+    }
+    {logo == undefined && <div>{siteName}</div>}
+  </div>
+  <DesktopNav menuOptions={menuOptions} />
+  <div class="mobile-hidden">
+    <Button colour="accent" hideBorder>
+      <a href="tel:15878963349" class="mobile-hidden contact">1.587.896.3349</a>
+    </Button>
+  </div>
+  <MobileNav menuOptions={menuOptions} />
 </header>
 
 <style>
-	.contact {
-		color: white;
-		text-decoration: none;
-	}
+  .contact {
+    color: white;
+    text-decoration: none;
+  }
+
+  svg {
+    width: 48px;
+    height: auto;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    header {
+      height: var(--header-height);
+    }
+  }
 </style>
