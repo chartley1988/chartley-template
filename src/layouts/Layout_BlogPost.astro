@@ -1,0 +1,42 @@
+---
+import Layout from "./Layout.astro";
+import type { MarkdownLayoutProps } from "astro";
+
+type Props = MarkdownLayoutProps<{
+  title: string;
+  summary: string;
+  date: string;
+  url: string;
+  thumbnail?: {
+    image: string;
+    alt: string;
+  };
+}>;
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+  <div class="container">
+    <h1 class="markdown">{frontmatter.title}</h1>
+    <p class="markdown-date">
+      {new Date(frontmatter.date).toISOString().slice(0, 10)}
+    </p>
+
+    <slot />
+  </div>
+</Layout>
+
+<style is:global>
+  h1.markdown {
+    color: var(--primary);
+  }
+
+  p.markdown-date {
+    font-style: italic;
+    font-style: 1.5rem;
+    position: relative;
+    left: 2rem;
+    color: var(--ui-text-low-contrast);
+  }
+</style>
