@@ -69,16 +69,15 @@ const { title, logo, description = summary.description } = Astro.props;
       showSiteName={true}
     />
     <script>
-      // 	import dark_mode from "../utilities/check_dark_mode";
-      //
-      // 	// If JS enabled, remove 'no-js' class
-      // 	const page_body = document.getElementById("page-body");
-      // 	if (page_body) page_body.className = "";
-      //
-      // 	const userPreference = dark_mode.checkUserPreference();
-      // 	dark_mode.updateColourTheme(userPreference);
-      // 	dark_mode.onUserChange();
-      //
+      import dark_mode from "../utilities/check_dark_mode";
+
+      // If JS enabled, remove 'no-js' class
+      const page_body = document.getElementById("page-body");
+      if (page_body) page_body.className = "";
+
+      const userPreference = dark_mode.checkUserPreference();
+      dark_mode.updateColourTheme(userPreference);
+      dark_mode.onUserChange();
     </script>
 
     <style>
