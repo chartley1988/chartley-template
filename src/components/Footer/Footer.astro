@@ -5,209 +5,205 @@ import FooterList from "./FooterList.astro";
 import { getCollection, getEntry } from "astro:content";
 const servicesCollection = await getCollection("services");
 interface Props {
-	siteName: string;
-	showSiteName?: boolean;
-	logo?: string | undefined;
+  siteName: string;
+  showSiteName?: boolean;
+  logo?: string | undefined;
 }
 
 interface itemList {
-	heading: string;
-	items:
-		| {
-				text: string;
-				url: string;
-		  }[]
-		| never;
+  heading: string;
+  items:
+    | {
+        text: string;
+        url: string;
+      }[]
+    | never;
 }
 
 const { siteName, logo, showSiteName = true } = Astro.props;
 
 const services: itemList = {
-	heading: "Services",
-	items: servicesCollection.map((item) => {
-		return {
-			text: item.data.title,
-			url: `/services/${item.data.title.toLowerCase()}`,
-		};
-	}),
+  heading: "Services",
+  items: servicesCollection.map((item) => {
+    return {
+      text: item.data.title,
+      url: `/services/${item.data.title.toLowerCase()}`,
+    };
+  }),
 };
 
 const navigation = {
-	heading: "Navigation",
-	items: [
-		{
-			text: "Home",
-			url: "/",
-		},
-		{
-			text: "Blog",
-			url: "/blog?page=1"
-		},
-		{
-			text: "About Us",
-			url: "/",
-		},
-		{
-			text: "Contact Us",
-			url: "/",
-		},
-	],
+  heading: "Navigation",
+  items: [
+    {
+      text: "Home",
+      url: "/",
+    },
+    {
+      text: "Blog",
+      url: "/blog?page=1",
+    },
+    {
+      text: "About Us",
+      url: "/about-us",
+    },
+    {
+      text: "Contact Us",
+      url: "/",
+    },
+  ],
 };
 
 const socials = {
-	heading: "Social Media",
-	items: [
-		{
-			text: "Formerly Twitter",
-			url: "/",
-			badge: "twitter-x",
-		},
-		{
-			text: "Instagram",
-			url: "/",
-			badge: "ri:instagram-fill",
-		},
-		{
-			text: "Facebook",
-			url: "/",
-			badge: "simple-icons:facebook",
-		},
-	],
+  heading: "Social Media",
+  items: [
+    {
+      text: "Formerly Twitter",
+      url: "/",
+      badge: "twitter-x",
+    },
+    {
+      text: "Instagram",
+      url: "/",
+      badge: "ri:instagram-fill",
+    },
+    {
+      text: "Facebook",
+      url: "/",
+      badge: "simple-icons:facebook",
+    },
+  ],
 };
 ---
 
-<footer class='footer'>
-	<div class='flex-responsive container'>
-		<div class='logo'>
-			<svg
-				xmlns='http://www.w3.org/2000/svg'
-				fill='none'
-				viewBox='0 0 128 128'
-			>
-				<path
-					d='M50.4 78.5a75.1 75.1 0 0 0-28.5 6.9l24.2-65.7c.7-2 1.9-3.2 3.4-3.2h29c1.5 0 2.7 1.2 3.4 3.2l24.2 65.7s-11.6-7-28.5-7L67 45.5c-.4-1.7-1.6-2.8-2.9-2.8-1.3 0-2.5 1.1-2.9 2.7L50.4 78.5Zm-1.1 28.2Zm-4.2-20.2c-2 6.6-.6 15.8 4.2 20.2a17.5 17.5 0 0 1 .2-.7 5.5 5.5 0 0 1 5.7-4.5c2.8.1 4.3 1.5 4.7 4.7.2 1.1.2 2.3.2 3.5v.4c0 2.7.7 5.2 2.2 7.4a13 13 0 0 0 5.7 4.9v-.3l-.2-.3c-1.8-5.6-.5-9.5 4.4-12.8l1.5-1a73 73 0 0 0 3.2-2.2 16 16 0 0 0 6.8-11.4c.3-2 .1-4-.6-6l-.8.6-1.6 1a37 37 0 0 1-22.4 2.7c-5-.7-9.7-2-13.2-6.2Z'
-				></path>
-				<style>
-					path {
-						fill: currentColor;
-					}
-					@media (prefers-color-scheme: dark) {
-						path {
-							fill: #fff;
-						}
-					}
-				</style>
-			</svg>
-			<div class='flex-column'>
-				{showSiteName && <div>{siteName}</div>}
-				<p>Copyright 2023 Tamarack Designs</p>
-			</div>
-		</div>
+<footer class="footer">
+  <div class="flex-responsive container">
+    <div class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 128 128">
+        <path
+          d="M50.4 78.5a75.1 75.1 0 0 0-28.5 6.9l24.2-65.7c.7-2 1.9-3.2 3.4-3.2h29c1.5 0 2.7 1.2 3.4 3.2l24.2 65.7s-11.6-7-28.5-7L67 45.5c-.4-1.7-1.6-2.8-2.9-2.8-1.3 0-2.5 1.1-2.9 2.7L50.4 78.5Zm-1.1 28.2Zm-4.2-20.2c-2 6.6-.6 15.8 4.2 20.2a17.5 17.5 0 0 1 .2-.7 5.5 5.5 0 0 1 5.7-4.5c2.8.1 4.3 1.5 4.7 4.7.2 1.1.2 2.3.2 3.5v.4c0 2.7.7 5.2 2.2 7.4a13 13 0 0 0 5.7 4.9v-.3l-.2-.3c-1.8-5.6-.5-9.5 4.4-12.8l1.5-1a73 73 0 0 0 3.2-2.2 16 16 0 0 0 6.8-11.4c.3-2 .1-4-.6-6l-.8.6-1.6 1a37 37 0 0 1-22.4 2.7c-5-.7-9.7-2-13.2-6.2Z"
+        ></path>
+        <style>
+          path {
+            fill: currentColor;
+          }
+          @media (prefers-color-scheme: dark) {
+            path {
+              fill: #fff;
+            }
+          }
+        </style>
+      </svg>
+      <div class="flex-column">
+        {showSiteName && <div>{siteName}</div>}
+        <p>Copyright 2023 Tamarack Designs</p>
+      </div>
+    </div>
 
-		<div class='grid'>
-			<FooterList data={navigation} />
+    <div class="grid">
+      <FooterList data={navigation} />
 
-			<FooterList data={services} />
+      <FooterList data={services} />
 
-			<FooterList data={socials} />
-		</div>
-	</div>
-	<div class='bottom-text'>
-		<hr />
-		 Designed by Chartley
-	</div>
+      <FooterList data={socials} />
+    </div>
+  </div>
+  <div class="bottom-text">
+    <hr />
+     Designed by Chartley
+  </div>
 </footer>
 
 <style>
-	/* Change background of footer here */
-	.footer {
-		background-color: var(--ui-element-bg);
-		padding: 0.75rem;
-		padding-top: var(--spacing-md);
-	}
+  /* Change background of footer here */
+  .footer {
+    background-color: var(--ui-element-bg);
+    padding: 0.75rem;
+    padding-top: var(--spacing-md);
+  }
 
-	.flex-responsive {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing-lg);
-	}
+  .flex-responsive {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
 
-	.grid {
-		flex: 1;
-		display: grid;
-		gap: 2rem 1rem;
+  .grid {
+    flex: 1;
+    display: grid;
+    gap: 2rem 1rem;
 
-		grid-template-columns: 1fr;
-		grid-template-rows: auto;
-		grid-auto-flow: row;
-	}
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-auto-flow: row;
+  }
 
-	.logo {
-		display: flex;
-		flex-direction: row;
-		align-items: start;
-		justify-content: start;
-		color: var(--ui-text-low-contrast);
-	}
+  .logo {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    color: var(--ui-text-low-contrast);
+  }
 
-	.logo > *:first-child {
-		width: 48px;
-		height: auto;
-		max-height: 100px;
-	}
+  .logo > *:first-child {
+    width: 48px;
+    height: auto;
+    max-height: 100px;
+  }
 
-	.bottom-text {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		margin-top: 1.5rem;
-		margin-bottom: 0.75rem;
-	}
+  .bottom-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
 
-	.bottom-text > hr {
-		border: var(--ui-border-subtle) solid 1px;
-		margin-bottom: var(--spacing-md);
-	}
+  .bottom-text > hr {
+    border: var(--ui-border-subtle) solid 1px;
+    margin-bottom: var(--spacing-md);
+  }
 
-	@media only screen and (min-width: 768px) {
-		.grid {
-			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-			align-items: start;
-		}
+  @media only screen and (min-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      align-items: start;
+    }
 
-		.logo {
-			grid-column: 1/2;
-			flex-direction: column;
-			justify-content: center;
-		}
+    .logo {
+      grid-column: 1/2;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-		.logo > :first-child {
-			height: 100%;
-			width: auto;
-		}
+    .logo > :first-child {
+      height: 100%;
+      width: auto;
+    }
 
-		.flex-responsive {
-			flex-direction: row;
-			align-items: center;
-			gap: var(--spacing-lg);
-		}
-	}
+    .flex-responsive {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--spacing-lg);
+    }
+  }
 
-	@media (min-width: 1024px) {
-		.logo {
-			grid-column: 1/2;
-			flex-direction: column;
-			justify-content: center;
-		}
+  @media (min-width: 1024px) {
+    .logo {
+      grid-column: 1/2;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-		.logo > :first-child {
-			height: 100%;
-			width: auto;
-		}
+    .logo > :first-child {
+      height: 100%;
+      width: auto;
+    }
 
-		.bottom-text {
-			grid-row: -1;
-			justify-self: center;
-		}
-	}
+    .bottom-text {
+      grid-row: -1;
+      justify-self: center;
+    }
+  }
 </style>

@@ -1,0 +1,59 @@
+---
+import Layout from "../layouts/Layout.astro";
+import OurTeam from "../components/AboutUs/OurTeam.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <div class="container">
+    <!-- Our Mission -->
+    <h2>Our Mission</h2>
+    <p>
+      Empowering individuals and communities through [your organization's focus
+      or industry] by delivering innovative solutions, fostering collaboration,
+      and promoting sustainable growth. Our mission is to [specific goal or
+      objective], creating a positive impact on [relevant stakeholders] and
+      contributing to a brighter, more connected future.
+    </p>
+
+    <!-- Our Story -->
+    <h2>Our Story</h2>
+    <p>
+      Welcome to [Your Organization Name], where our story is a testament to
+      purpose and perseverance. From our humble beginnings guided by [core
+      values or mission], we've grown into a dynamic force in [industry or
+      purpose]. Our journey is marked by innovation, dedication, and a
+      relentless pursuit of [specific goals or ideals]. At [Your Organization
+      Name], each chapter of our story is defined by the people, the passion,
+      and the progress we make. Join us as we continue to evolve, leaving an
+      indelible mark on [industry or purpose]. This is not just our story; it's
+      an open invitation for you to be part of the narrative at [Your
+      Organization Name].
+    </p>
+
+    <!-- Our Team -->
+    <h2>Our Team</h2>
+    <OurTeam cardSize={{ width: "200px", height: "300px" }} />
+
+    <!-- Endorsements -->
+    <h2>Endorsements</h2>
+    <h3>A high profile client</h3>
+    <p class="endorsement-text">
+      Wholeheartedly recommending [Your Organization Name]! Their expertise in
+      [industry or purpose] is evident in every interaction. From innovative
+      solutions to unwavering commitment to [core values or mission], [Your
+      Organization Name] stands out. A top choice for excellence and
+      personalized service in [industry].
+    </p>
+
+    <!-- Contact Info -->
+    <h2>Contact Us</h2>
+    <!-- Social Media -->
+    <h2>Social Media</h2>
+  </div>
+</Layout>
+
+<style>
+  .endorsement-text {
+    font-style: italic;
+  }
+</style>

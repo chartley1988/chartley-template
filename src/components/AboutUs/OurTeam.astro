@@ -1,0 +1,99 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import profile from '../../assets/images/avatar.svg'
+
+interface Props {
+  cardSize: {
+    width: string,
+    height: string,
+  }
+}
+
+const team = await getCollection("team");
+const { cardSize } = Astro.props;
+---
+
+<section>
+  <ul>
+    {
+      team.map((member) => {
+        return (
+          <li class="card">
+            {member.data.picture ? (
+              <Image
+                src={member.data.picture}
+                alt=`Photo of ${member.data.name}`
+              />
+            ) : (
+              <Image
+                src={profile}
+                alt="Missing Photo - Placeholder"
+                width={Number( cardSize.width )}
+                height={Number( cardSize.width )} />
+            )}
+            <div class="text">
+              <h3 class="name">{member.data.name}</h3>
+              <div class="role">{member.data.role}</div>
+            </div>
+          </li>
+        );
+      })
+    }
+  </ul>
+</section>
+
+<style define:vars={{width: cardSize.width, height: cardSize.height}}>
+
+  section {
+    margin-top: var(--spacing-md);
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, var(--width));
+    gap: var(--spacing-md);
+    justify-content: center;
+    justify-items: center;
+    padding-inline-start: 0px;
+  }
+
+  li {
+    list-style: none;
+    box-shadow: var(--shadow-md);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+
+    width: var(--width);
+    height: var(--height);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: end;
+  }
+
+  img {
+    width: var(--width);
+    height: auto;
+    object-fit:cover;
+    aspect-ratio: 1/1;
+  }
+
+  .text {
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    text-align: right;
+    }
+
+  @media (min-width: 640px)  {
+   ul {
+      justify-content: start;
+      justify-items: start;
+    } 
+  }
+
+</style>
