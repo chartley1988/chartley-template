@@ -1,76 +1,75 @@
 ---
 import style from "./Footer.module.css";
-import { Icon } from 'astro-icon'
+import { Icon } from "astro-icon";
 
 interface Props {
-	data: listType;
+  data: listType;
 }
 
 interface listType {
-	heading: string | undefined;
-	items: {
-		text: string;
-		url: string;
-        badge?: string;
-	}[];
+  heading: string | undefined;
+  items: {
+    text?: string;
+    url?: string;
+    badge?: string;
+  }[];
 }
 
 const { data } = Astro.props;
 ---
 
-<div class='wrapper'>
-	{data.heading && <h2>{data.heading}</h2>}
+<div class="wrapper">
+  {data.heading && <h2>{data.heading}</h2>}
 
-	<ul>
-		{
-			data.items.map((entry) => {
-				return (
-					<li>
-						<a href={entry.url}>
-                            {entry.badge && <Icon name={entry.badge} />}
-							{entry.text && <span>{entry.text}</span>}
-						</a>
-					</li>
-				);
-			})
-		}
-	</ul>
+  <ul>
+    {
+      data.items.map((entry) => {
+        return (
+          <li>
+            <a href={entry.url}>
+              {entry.badge && <Icon name={entry.badge} />}
+              {entry.text && <span>{entry.text}</span>}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
 </div>
 
 <style>
-	.wrapper {
-		
-	}
+  .wrapper {
+  }
 
-	h2 {
-		color: var(--ui-text-low-contrast);
-		font-size: 1.25rem;
-		margin-bottom: 1rem;
-		margin-top: 0;
-	}
+  h2 {
+    color: var(--ui-text-low-contrast);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    margin-top: 0;
+  }
 
-	ul {
-		padding-inline-start: 0px;
-		display: flex;
-		flex-direction: column;
-		gap: 0.75rem;
-		list-style: none;
-	}
+  ul {
+    padding-inline-start: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    list-style: none;
+  }
 
-	a {
-		color: var(--ui-text-high-contrast);
-		text-decoration: none;
+  a {
+    color: var(--ui-text-high-contrast);
+    text-decoration: none;
 
-        display: flex;
-        gap: var(--spacing-sm);
-        align-items: center;
-	}
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+  }
 
-    a > svg {
-        width: 1rem;
-        height: auto;
-    }
+  a > svg {
+    width: 1rem;
+    height: auto;
+  }
 
-	@media only screen and (min-width: 1024px) {
-	}
+  @media only screen and (min-width: 1024px) {
+  }
 </style>
