@@ -1,0 +1,83 @@
+---
+import Layout from "../layouts/Layout.astro";
+import OurTeam from "../components/AboutUs/OurTeam.astro";
+
+import summary from "../data/summary";
+
+const contact = summary.contact;
+const social = summary.social;
+---
+
+<Layout title="Welcome to Astro.">
+  <div class="container">
+    <!-- Contact Info -->
+    <h2>Contact Us</h2>
+    {
+      contact && (
+        <div>
+          {contact.email && (
+            <div class="contact_wrapper">
+              <>
+                <strong>Email:</strong>
+                <div>{contact.email}</div>
+              </>
+            </div>
+          )}
+          {contact.phone && (
+            <div class="contact_wrapper">
+              <>
+                <strong>Phone:</strong>
+                <div>{contact.phone}</div>
+              </>
+            </div>
+          )}
+        </div>
+      )
+    }
+
+    <!-- Social Media -->
+    {
+      social && (
+        <div>
+          <h2>Social Media</h2>
+          {social.twitter && (
+            <div class="contact_wrapper">
+              <strong>Twitter:</strong>
+              <a href={social.twitter.url}>{social.twitter.url}</a>
+            </div>
+          )}
+          {social.facebook && (
+            <div class="contact_wrapper">
+              <strong>Facebook:</strong>
+              <a href={social.facebook.url}>{social.facebook.url}</a>
+            </div>
+          )}
+          {social.youtube && (
+            <div class="contact_wrapper">
+              <strong>Youtube:</strong>
+              <a href={social.youtube.url}>{social.youtube.url}</a>
+            </div>
+          )}
+        </div>
+      )
+    }
+  </div>
+</Layout>
+
+<style>
+  .endorsement-text {
+    font-style: italic;
+  }
+
+  .contact_wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-sm);
+    justify-content: start;
+  }
+
+  /* This just makes it so they look lined up, more like a grid. */
+  .contact_wrapper > strong {
+    min-width: 10ch;
+  }
+</style>
