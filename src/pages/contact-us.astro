@@ -58,6 +58,12 @@ const social = summary.social;
               <a href={social.youtube.url}>{social.youtube.url}</a>
             </div>
           )}
+          {social.linkedin && (
+            <div class="contact_wrapper">
+              <strong>Youtube:</strong>
+              <a href={social.linkedin.url}>{social.linkedin.url}</a>
+            </div>
+          )}
         </div>
       )
     }
