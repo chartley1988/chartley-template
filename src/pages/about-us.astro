@@ -53,25 +53,28 @@ const social = summary.social;
     <!-- Contact Info -->
     <h2>Contact Us</h2>
     {
-      contact.email && (
-        <div class="contact_wrapper">
-          <>
-            <strong>Email:</strong>
-            <div>{contact.email}</div>
-          </>
+      contact && (
+        <div>
+          {contact.email && (
+            <div class="contact_wrapper">
+              <>
+                <strong>Email:</strong>
+                <div>{contact.email}</div>
+              </>
+            </div>
+          )}
+          {contact.phone && (
+            <div class="contact_wrapper">
+              <>
+                <strong>Phone:</strong>
+                <div>{contact.phone}</div>
+              </>
+            </div>
+          )}
         </div>
       )
     }
-    {
-      contact.phone && (
-        <div class="contact_wrapper">
-          <>
-            <strong>Phone:</strong>
-            <div>{contact.phone}</div>
-          </>
-        </div>
-      )
-    }
+
     <!-- Social Media -->
     {
       social && (

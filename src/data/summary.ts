@@ -4,7 +4,7 @@ interface summaryType {
   url: string;
   logoURL: string;
   description: string;
-  contact: {
+  contact?: {
     phone?: string;
     email?: string;
   };
