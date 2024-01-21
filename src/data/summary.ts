@@ -18,6 +18,9 @@ interface summaryType {
     youtube?: {
       url: string;
     };
+    instagram?: {
+      url: string;
+    };
   };
 }
 
