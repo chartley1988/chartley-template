@@ -1,0 +1,59 @@
+---
+import summary from "../data/summary";
+import Icon from "astro-icon";
+
+const socials: any = summary.social;
+
+function getSocialsArray() {
+  if (socials) {
+    return Object.values(socials);
+  } else {
+    return [];
+  }
+}
+
+interface socialsType {
+  url: string;
+  icon: string;
+  label: string;
+}
+
+const socialsArray: socialsType[] = getSocialsArray() as socialsType[];
+---
+
+{
+  socialsArray.length > 0 && (
+    <div>
+      <h2>Social Media</h2>
+      <div class="social-flex-column">
+        {socialsArray.map((entry) => {
+          return (
+            <a href={entry.url}>
+              <Icon name={entry.icon} size={20} />
+              <strong>{entry.label}</strong>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  )
+}
+
+<style>
+  .social-flex-column {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  a {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-sm);
+    align-items: center;
+  }
+
+  a > svg {
+    color: var(--primary);
+  }
+</style>

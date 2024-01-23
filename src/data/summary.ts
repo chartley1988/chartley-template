@@ -9,22 +9,18 @@ interface summaryType {
     email?: string;
   };
   social?: {
-    twitter?: {
-      url: string;
-    };
-    facebook?: {
-      url: string;
-    };
-    youtube?: {
-      url: string;
-    };
-    instagram?: {
-      url: string;
-    };
-    linkedin?: {
-      url: string;
-    };
+    twitter?: socialType;
+    facebook?: socialType;
+    youtube?: socialType;
+    instagram?: socialType;
+    linkedin?: socialType;
   };
+}
+
+interface socialType {
+  url: string;
+  icon: string;
+  label: string;
 }
 
 // Enter all the info for your site here, used throughout.
@@ -36,10 +32,26 @@ const summary: summaryType = {
     "A company devoted to building beautiful additions to your home. From decks, fences, pergolas, and more. Call now for a free quote!",
   contact: { phone: "123-321-4321", email: "example@gmail.com" },
   social: {
-    twitter: { url: "https://www.twitter.com/" },
-    facebook: { url: "https://www.facebook.com/" },
-    youtube: { url: "https://www.youtube.com/watch?v=Gibberish" },
-    linkedin: { url: "https://www.linkedin.com/in/unique-url" },
+    twitter: {
+      url: "https://www.twitter.com/",
+      icon: "twitter-x",
+      label: "Twitter",
+    },
+    facebook: {
+      url: "https://www.facebook.com/",
+      icon: "facebook",
+      label: "Facebook",
+    },
+    youtube: {
+      url: "https://www.youtube.com/watch?v=Gibberish",
+      icon: "youtube",
+      label: "Youtube",
+    },
+    linkedin: {
+      url: "https://www.linkedin.com/in/unique-url",
+      icon: "linkedin",
+      label: "LinkedIn",
+    },
   },
 };
 

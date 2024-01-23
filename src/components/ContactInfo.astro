@@ -1,0 +1,55 @@
+---
+import summary from "../data/summary";
+import Icon from "astro-icon";
+
+const contact: any = summary.contact;
+
+interface contactType {
+  phone?: string;
+  email?: string;
+}
+---
+
+<div>
+  {contact && <h2>Contact Info</h2>}
+  {
+    contact && (
+      <div class="contact-flex-column">
+        {contact.email && (
+          <div class="contact_wrapper">
+            <>
+              <Icon name="mail" size={24} />
+              <a href={`mailto:${contact.email}`}>{contact.email}</a>
+            </>
+          </div>
+        )}
+        {contact.phone && (
+          <div class="contact_wrapper">
+            <>
+              <Icon name="phone" size={24} />
+              <a href={`tel:${contact.phone}`}>{contact.phone}</a>
+            </>
+          </div>
+        )}
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .contact-flex-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact_wrapper {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+  }
+
+  .contact_wrapper > svg {
+    color: var(--primary);
+  }
+</style>

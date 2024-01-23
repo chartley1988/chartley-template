@@ -1,14 +1,19 @@
+# README
+
 ## Customizing This Theme
 
-Most of the customization is done in the theme.css file. Here you can change default colours, fonts, spacing, and more. At the top of the Layout page, edit the metadata to have site-wide impacts. I'll probably move this to its own file out of the layout file, and the layout file will import it.
+Most of the customization is done in the theme.css file. Here you can change
+default colours, fonts, spacing, and more. At the top of the Layout page, edit
+the metadata to have site-wide impacts. I'll probably move this to its own file
+out of the layout file, and the layout file will import it.
 
 ## Using Colours
 
 _Borrowed From Radix Colour themes_: [Radix](https://www.radix-ui.com/colors/docs/palette-composition/understanding-the-scale)
 
--   For more finely tuned colour palettes: [Radix Scales](https://www.radix-ui.com/colors/docs/palette-composition/scales)
--   Use `Slate` for a cool gray
--   Use `Nickel` for a warm gray
+- For more finely tuned colour palettes: [Radix Scales](https://www.radix-ui.com/colors/docs/palette-composition/scales)
+- Use `Slate` for a cool gray
+- Use `Nickel` for a warm gray
 
 | Colour | Use                                   |
 | :----- | :------------------------------------ |
