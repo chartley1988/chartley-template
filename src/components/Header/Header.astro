@@ -1,11 +1,10 @@
 ---
 import style from "./Header.module.css";
 import DesktopNav from "./DesktopNav/DesktopNav.astro";
-import ContactButton from "./ContactButton.astro";
 import MobileNav from "./MobileNav/MobileNav.astro";
 import Button from "../Button.astro";
 
-import { getCollection, getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 const content = await getCollection("services");
 
 interface Props {
@@ -60,7 +59,7 @@ const menuOptions: menuOptionsType[] = [
 ---
 
 <header class={style.container}>
-  <div class={style.letterhead}>
+  <a class={style.letterhead} href="/">
     {
       logo != undefined && (
         <>
@@ -70,7 +69,7 @@ const menuOptions: menuOptionsType[] = [
       )
     }
     {logo == undefined && <div>{siteName}</div>}
-  </div>
+  </a>
   <DesktopNav menuOptions={menuOptions} />
   <div class="mobile-hidden">
     <Button colour="accent" hideBorder>
