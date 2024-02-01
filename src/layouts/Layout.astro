@@ -19,7 +19,11 @@ interface Props {
   description?: string;
 }
 
-const { title, logo, description = summary.description } = Astro.props;
+const {
+  title = summary.siteName,
+  logo,
+  description = summary.description,
+} = Astro.props;
 ---
 
 <!doctype html>
