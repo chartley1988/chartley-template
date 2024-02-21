@@ -1,5 +1,4 @@
 ---
-import style from "./Header.module.css";
 import DesktopNav from "./DesktopNav/DesktopNav.astro";
 import MobileNav from "./MobileNav/MobileNav.astro";
 import Button from "../Button.astro";
@@ -8,91 +7,159 @@ import { getCollection } from "astro:content";
 const content = await getCollection("services");
 
 interface Props {
-  siteName: string;
-  showSiteName?: boolean;
-  logo?: string | undefined;
+    siteName: string;
+    showSiteName?: boolean;
+    logo?: string | undefined;
 }
 
 const { siteName, logo, showSiteName = true } = Astro.props;
 
 type menuOptionsType = {
-  title: string;
-  path: string;
-  badge?: true;
-  children?: menuOptionsType[];
+    title: string;
+    path: string;
+    badge?: true;
+    children?: menuOptionsType[];
 };
 
 const menuOptions: menuOptionsType[] = [
-  {
-    title: "Home",
-    path: "/",
-  },
-  {
-    title: "Blog",
-    path: `/blog/page-1`,
-  },
-  {
-    title: "Services",
-    path: "/",
-    children: content.map((entry) => {
-      return {
-        title: entry.data.title,
-        path: `/services/${entry.data.title.toLowerCase()}`,
-      };
-    }),
-  },
-  {
-    title: "About",
-    path: "/",
-    children: [
-      {
-        title: "About Us",
-        path: "/about-us",
-      },
-      {
-        title: "Contact Us",
-        path: "/contact-us",
-      },
-    ],
-  },
+    {
+        title: "Home",
+        path: "/",
+    },
+    {
+        title: "Blog",
+        path: `/blog/page-1`,
+    },
+    {
+        title: "Services",
+        path: "/",
+        children: content.map((entry) => {
+            return {
+                title: entry.data.title,
+                path: `/services/${entry.data.title.toLowerCase()}`,
+            };
+        }),
+    },
+    {
+        title: "About",
+        path: "/",
+        children: [
+            {
+                title: "About Us",
+                path: "/about-us",
+            },
+            {
+                title: "Contact Us",
+                path: "/contact-us",
+            },
+        ],
+    },
 ];
 ---
 
-<header class={style.container}>
-  <a class={style.letterhead} href="/">
-    {
-      logo != undefined && (
-        <>
-          <img src={logo} alt="" />
-          {showSiteName && <div>{siteName}</div>}
-        </>
-      )
-    }
-    {logo == undefined && <div>{siteName}</div>}
-  </a>
-  <DesktopNav menuOptions={menuOptions} />
-  <div class="mobile-hidden">
-    <Button colour="accent" hideBorder>
-      <a href="tel:15878963349" class="mobile-hidden contact">1.587.896.3349</a>
-    </Button>
-  </div>
-  <MobileNav menuOptions={menuOptions} />
+<header>
+    <a class="letterhead" href="/">
+        {
+            logo != undefined && (
+                <>
+                    <img src={logo} alt="" />
+                    {showSiteName && <div>{siteName}</div>}
+                </>
+            )
+        }
+        {logo == undefined && <div>{siteName}</div>}
+    </a>
+    <DesktopNav menuOptions={menuOptions} />
+    <div class="mobile-hidden">
+        <Button colour="accent" hideBorder>
+            <a href="tel:15553332222" class="mobile-hidden contact"
+                >1.555.333.2222</a
+            >
+        </Button>
+    </div>
+    <MobileNav menuOptions={menuOptions} />
 </header>
 
 <style>
-  .contact {
-    color: white;
-    text-decoration: none;
-  }
-
-  svg {
-    width: 48px;
-    height: auto;
-  }
-
-  @media only screen and (min-width: 1024px) {
     header {
-      height: var(--header-height);
+        background-color: var(--ui-bg-subtle);
+        min-height: var(--header-height);
+        padding: 0 var(--spacing-md);
+
+        /* Only applicable in mobile */
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: max(var(--header-height)) auto;
+
+        justify-content: space-between;
+        align-items: center;
+
+        box-shadow: var(--shadow-md);
+        /* border-bottom: var(--ui-border-subtle) solid 2px; */
     }
-  }
+
+    .letterhead {
+        /* Sets the font-size and icon size for letterhead */
+        --lh-size: 1.25rem;
+
+        /* Only applicable in mobile */
+        grid-column: 1/2;
+        grid-row: 1/2;
+        height: var(--header-height);
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.25em;
+
+        font-size: var(--lh-size);
+        font-family: var(--font-headings);
+        color: var(--ui-text-high-contrast);
+
+        word-break: keep-all;
+        width: max-content;
+        text-decoration: none;
+    }
+
+    .letterhead:hover {
+        text-decoration: none;
+    }
+
+    a.letterhead > svg,
+    a.letterhead > img {
+        height: var(--lh-size);
+        width: auto;
+    }
+
+    .letterhead > div {
+        min-width: max-content;
+    }
+
+    @media (min-width: 640px) {
+        .letterhead {
+            --lh-size: 1.75rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .letterhead {
+            --lh-size: 2rem;
+        }
+
+        header {
+            display: flex;
+            flex-direction: row;
+        }
+
+        header > a > svg {
+            flex-shrink: 0;
+        }
+    }
+    .contact {
+        color: black;
+        text-decoration: none;
+    }
+
+    @media only screen and (min-width: 1024px) {
+    }
 </style>

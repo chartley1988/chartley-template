@@ -8,58 +8,58 @@ menuButton?.addEventListener("click", handleClickMenuButton);
 
 // Gets any menu options that have children and require a dropdown
 const submenus = menuOptions.filter((entry) =>
-	entry.hasOwnProperty("children")
+  entry.hasOwnProperty("children"),
 );
 
 submenus.forEach((entry) => {
-	const button = document.getElementById(`${entry.title}-dropdown`);
-	const submenu = button.parentElement.children[1];
+  const button = document.getElementById(`${entry.title}-dropdown`);
+  const submenu = button.parentElement.children[1];
 
-	button.addEventListener("click", (event) => {
-		submenu.classList.toggle("hidden");
-	});
+  button.addEventListener("click", (event) => {
+    submenu.classList.toggle("hidden");
+  });
 });
 
 function handleClickMenuButton(e) {
-	e.stopPropagation();
-	if (isOpen) {
-		closeAllMenus();
-	} else {
-		document.addEventListener("click", handleClickOutside);
-		document.addEventListener("keydown", handleEscapeKey);
-		menu?.classList.remove("mobile-hidden");
-		isOpen = true;
-	}
+  e.stopPropagation();
+  if (isOpen) {
+    closeAllMenus();
+  } else {
+    document.addEventListener("click", handleClickOutside);
+    document.addEventListener("keydown", handleEscapeKey);
+    menu?.classList.remove("hidden");
+    isOpen = true;
+  }
 }
 
 function handleClickOutside(event) {
-	event.stopPropagation();
-	if (isOpen) {
-		if (
-			event.target.closest("#mobile-menu") === null &&
-			event.target.closest("#menu-button") === null
-		) {
-			closeAllMenus();
-		}
-	}
+  event.stopPropagation();
+  if (isOpen) {
+    if (
+      event.target.closest("#mobile-menu") === null &&
+      event.target.closest("#menu-button") === null
+    ) {
+      closeAllMenus();
+    }
+  }
 }
 
 function handleEscapeKey(event) {
-	if (event.key === "Escape") {
-		closeAllMenus();
-        document.removeEventListener("keydown", handleEscapeKey);
-        menuButton.focus();
-	}
+  if (event.key === "Escape") {
+    closeAllMenus();
+    document.removeEventListener("keydown", handleEscapeKey);
+    menuButton.focus();
+  }
 }
 
 function closeAllMenus() {
-	submenus.forEach((entry) => {
-		const button = document.getElementById(`${entry.title}-dropdown`);
-		const submenu = button.parentElement.children[1];
-		submenu.classList.add("hidden");
-	});
+  submenus.forEach((entry) => {
+    const button = document.getElementById(`${entry.title}-dropdown`);
+    const submenu = button.parentElement.children[1];
+    submenu.classList.add("hidden");
+  });
 
-	document.removeEventListener("click", handleClickOutside);
-	menu.classList.add("mobile-hidden");
-	isOpen = false;
+  document.removeEventListener("click", handleClickOutside);
+  menu.classList.add("hidden");
+  isOpen = false;
 }

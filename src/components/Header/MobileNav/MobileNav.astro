@@ -3,89 +3,92 @@ import { Icon } from "astro-icon";
 import style from "./MobileNav.module.css";
 
 type menuOptionsType = {
-  title: string;
-  path: string;
-  badge?: true;
-  children?: menuOptionsType[];
+    title: string;
+    path: string;
+    badge?: true;
+    children?: menuOptionsType[];
 };
 interface Props {
-  menuOptions: menuOptionsType[];
+    menuOptions: menuOptionsType[];
 }
 
 const { menuOptions } = Astro.props;
 ---
 
 <button class={style["menu-button"]} id="menu-button" aria-label="Menu Button">
-  <Icon name="ic:baseline-menu" />
+    <Icon name="ic:baseline-menu" />
 </button>
 <div
-  id="mobile-menu"
-  class="mobile wrapper"
-  data-options={JSON.stringify(menuOptions)}
+    id="mobile-menu"
+    class="hidden wrapper"
+    data-options={JSON.stringify(menuOptions)}
 >
-  <menu class={style.container}>
-    {
-      menuOptions.map((item, index) => {
-        return item.children ? (
-          <li>
-            <button class={style.link} id={`${item.title}-dropdown`}>
-              {item.title}
-              <Icon name="fluent:chevron-down-12-filled" />
-            </button>
+    <menu class={style.container}>
+        {
+            menuOptions.map((item, index) => {
+                return item.children ? (
+                    <li>
+                        <button
+                            class={style.link}
+                            id={`${item.title}-dropdown`}
+                        >
+                            {item.title}
+                            <Icon name="fluent:chevron-down-12-filled" />
+                        </button>
 
-            <menu class="submenu hidden">
-              {item.children.map((item) => {
-                return (
-                  <li>
-                    <a href={item.path} class={style.link}>
-                      {item.title}
-                    </a>
-                  </li>
+                        <menu class="submenu hidden">
+                            {item.children.map((item) => {
+                                return (
+                                    <li>
+                                        <a href={item.path} class={style.link}>
+                                            {item.title}
+                                        </a>
+                                    </li>
+                                );
+                            })}
+                        </menu>
+                    </li>
+                ) : (
+                    <li>
+                        <a href={item.path} class={style.link}>
+                            {item.title}
+                        </a>
+                    </li>
                 );
-              })}
-            </menu>
-          </li>
-        ) : (
-          <li>
-            <a href={item.path} class={style.link}>
-              {item.title}
-            </a>
-          </li>
-        );
-      })
-    }
-  </menu>
+            })
+        }
+    </menu>
 </div>
 
 <style>
-  .wrapper {
-    grid-column: 1/3;
-    justify-self: end;
-  }
-
-  button {
-    padding-left: 0;
-  }
-
-  .submenu {
-    padding-left: var(--spacing-md);
-  }
-
-  .submenu > li {
-    list-style: none;
-  }
-
-  .hidden {
-    display: none;
-  }
-
-  @media (min-width: 1024px) {
     .wrapper {
-      display: none;
+        grid-column: 1/3;
+        justify-self: end;
     }
-  }
+
+    button {
+        padding-left: 0;
+    }
+
+    .submenu {
+        padding-left: var(--spacing-md);
+    }
+
+    .submenu > li {
+        list-style: none;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    @media (min-width: 1024px) {
+        .wrapper {
+            display: none;
+        }
+    }
 </style>
 
 <script>
-  import "./MobileDropdown";
+    import "./MobileDropdown";
 </script>
